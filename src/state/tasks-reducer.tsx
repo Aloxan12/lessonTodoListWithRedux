@@ -1,5 +1,4 @@
 import {TaskStateType} from '../App';
-import {act} from "react-dom/test-utils";
 import {v1} from "uuid";
 import {AddTodoListActionType, RemoveTodoListActionType, toDoListId_1, toDoListId_2} from "./todolist-reducer";
 
@@ -63,24 +62,25 @@ export const tasksReducer = (state: TaskStateType = initialState, action: Action
             stateCopy[action.todoListId] = newTasks
             return stateCopy
         }
-        case "CHANGE-TASK-STATUS": {
-            const stateCopy = {...state}
-            let tasks = stateCopy[action.todoListId]
-            let task = tasks.find(t => t.id === action.id)
-            if (task) {
-                task.isDone = action.newIsDone
+        case 'CHANGE-TASK-STATUS': {
+            return {
+                ...state,
+                [action.todoListId]: state[action.todoListId]
+                    .map(task => task.id === action.id
+                        ? {...task, isDone: action.newIsDone}
+                        : task)
             }
-            return stateCopy
         }
-        case "CHANGE-TASK-TITLE": {
-            const stateCopy = {...state}
-            let tasks = stateCopy[action.todoListId]
-            let task = tasks.find(t => t.id === action.id)
-            if (task) {
-                task.title = action.title
+        case 'CHANGE-TASK-TITLE': {
+            return {
+                ...state,
+                [action.todoListId]: state[action.todoListId]
+                    .map(task => task.id === action.id
+                        ? {...task, title: action.title}
+                        : task)
             }
-            return stateCopy
         }
+
         case "ADD-TODOLIST": {
             let stateCopy = {...state}
             stateCopy[action.todolistId] = []

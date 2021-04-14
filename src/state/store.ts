@@ -1,4 +1,3 @@
-import React from "react";
 import {combineReducers, createStore} from 'redux';
 import {tasksReducer} from "./tasks-reducer";
 import {todoListsReducer} from "./todolist-reducer";

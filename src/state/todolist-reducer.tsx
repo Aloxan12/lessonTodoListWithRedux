@@ -32,8 +32,8 @@ export const toDoListId_1 = v1()
 export const toDoListId_2 = v1()
 
 const initialState: Array<ToDoListType> = [
-    {id: toDoListId_1, title: 'What to learn', filter: 'all'},
-    {id: toDoListId_2, title: 'What to Buy', filter: 'all'}
+    // {id: toDoListId_1, title: 'What to learn', filter: 'all'},
+    // {id: toDoListId_2, title: 'What to Buy', filter: 'all'}
 ]
 
 export const todoListsReducer = (todoLists: Array<ToDoListType> = initialState, action: ActionType) => {
