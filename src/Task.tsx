@@ -1,37 +1,37 @@
-import React, {ChangeEvent, useCallback} from "react";
-import {TaskType} from "./AppWithRedux";
-import {Checkbox, IconButton} from "@material-ui/core";
-import {Delete, Favorite, FavoriteBorder} from "@material-ui/icons";
+import React, {ChangeEvent} from 'react';
+import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import {EditableSpan} from "./EditableSpan";
+import IconButton from "@material-ui/core/IconButton/IconButton";
+import {Delete} from "@material-ui/icons";
+import {TaskType} from "./AppWithRedux";
 
-
-type TasksPropsType = {
-    changeTaskTitle:(id: string, newTitle:string, todoListId: string)=> void
-    changeTasksStatus:(taskId: string, newIsDone: boolean, toDoListId: string)=> void
-    removeTasks:(taskID: string, toDoListId: string)=>void
+export type TaskPropsType = {
     task: TaskType
-    todoListId: string
+    removeTask: (taskId: string) => void
+    changeTaskStatus: (id: string, isDone: boolean) => void
+    changeTaskTitle: (taskId: string, newTitle: string) => void
 }
-
-
-export const Task = React.memo((props:TasksPropsType)=>{
-    const removeTasks = () => props.removeTasks(props.task.id, props.todoListId)
+export const Task = React.memo((props: TaskPropsType) => {
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        props.changeTasksStatus(props.task.id, e.currentTarget.checked, props.todoListId)
+        props.changeTaskStatus(props.task.id, e.currentTarget.checked)
+
     }
-    const changeTaskTitle = useCallback((newTitle: string) =>{
-        props.changeTaskTitle(props.task.id, newTitle, props.todoListId)},
-        [props.changeTaskTitle, props.task.id, props.todoListId])
+    const onTitleChangeHandler = (newTitle: string) => {
+        props.changeTaskTitle(props.task.id, newTitle)
+    }
+    const onClickHandler = () => {
+        props.removeTask(props.task.id)
+
+    }
     return (
-        <div className={props.task.isDone ? "isDone" : ''}>
+        <div className={props.task.isDone ? "is-done" : ""}>
             <Checkbox
-                icon={<FavoriteBorder />}
-                checkedIcon={<Favorite />}
-                onChange={onChangeHandler}
                 checked={props.task.isDone}
+                color="primary"
+                onChange={onChangeHandler}
             />
-            <EditableSpan title={props.task.title} changeTitle={changeTaskTitle}/>
-            <IconButton onClick={removeTasks} aria-label="delete">
+            <EditableSpan title={props.task.title} changeTitle={onTitleChangeHandler}/>
+            <IconButton onClick={onClickHandler}>
                 <Delete/>
             </IconButton>
         </div>

@@ -1,6 +1,6 @@
 import React, {useReducer, useState} from 'react';
 import './App.css';
-import ToDoList from "./ToDoList";
+import {Todolist} from "./ToDoList";
 import {v1} from 'uuid';
 import {AddItemForm} from "./AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
@@ -108,18 +108,18 @@ function App() {
         return (
             <Grid item>
                 <Paper elevation={3} style={{padding: '20px'}}>
-                    <ToDoList
+                    <Todolist
                         id={tl.id}
                         title={tl.title}
-                        tasks={tasksForToDoList}
-                        removeTasks={removeTasks}
+                        tasks={tasks[tl.id]}
+                        removeTask={removeTasks}
                         addTask={addTask}
-                        changeToDoList={changeToDoList}
-                        changeToDoListTitle={changeToDoListTitle}
-                        changeStatus={changeTasksStatus}
-                        changeTitle={changeTasksTitle}
+                        changeFilter={changeToDoList}
+                        changeTodolistTitle={changeToDoListTitle}
+                        changeTaskStatus={changeTasksStatus}
+                        changeTaskTitle={changeTasksTitle}
                         filter={tl.filter}
-                        removeTodoList={removeTodoList}
+                        removeTodolist={removeTodoList}
                     />
                 </Paper>
             </Grid>

@@ -1,7 +1,6 @@
 import React, {useCallback, useReducer, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import './App.css';
-import ToDoList from "./ToDoList";
 import {v1} from 'uuid';
 import {AddItemForm} from "./AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
@@ -14,6 +13,7 @@ import {
 } from "./state/todolist-reducer";
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./state/tasks-reducer";
 import {AppRootState} from "./state/store";
+import {Todolist} from "./ToDoList";
 
 export type TaskType = {
     title: string
@@ -82,18 +82,18 @@ function App() {
         return (
             <Grid item>
                 <Paper elevation={3} style={{padding: '20px'}}>
-                    <ToDoList
+                    <Todolist
                         id={tl.id}
                         title={tl.title}
                         tasks={tasks[tl.id]}
-                        removeTasks={removeTasks}
+                        removeTask={removeTasks}
                         addTask={addTask}
-                        changeToDoList={changeToDoList}
-                        changeToDoListTitle={changeToDoListTitle}
-                        changeStatus={changeTasksStatus}
-                        changeTitle={changeTasksTitle}
+                        changeFilter={changeToDoList}
+                        changeTodolistTitle={changeToDoListTitle}
+                        changeTaskStatus={changeTasksStatus}
+                        changeTaskTitle={changeTasksTitle}
                         filter={tl.filter}
-                        removeTodoList={removeTodoList}
+                        removeTodolist={removeTodoList}
                     />
                 </Paper>
             </Grid>
