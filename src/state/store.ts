@@ -8,9 +8,21 @@ const rootReducer = combineReducers({
     tasks: tasksReducer,
 })
 
+let preloadedState;
+const persistedTodosString = localStorage.getItem('state')
+if(persistedTodosString){
+    preloadedState = JSON.parse(persistedTodosString)
+}
+
+export const store = createStore(rootReducer, preloadedState)
+
+store.subscribe(()=>{
+    localStorage.setItem('state', JSON.stringify(store.getState()))
+    localStorage.setItem('todos', JSON.stringify(store.getState().todoLists))
+    localStorage.setItem('tasks', JSON.stringify(store.getState().tasks))
+})
+
+
 export type AppRootState = ReturnType<typeof rootReducer>
-
-export const store = createStore(rootReducer)
-
 //@ts-ignore
 window.store = store
