@@ -1,9 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import {App} from "./App";
-
-export const About = ()=>{
-    return <div>about</div>
-}
+import {App} from "./pages/Main/App";
+import {About} from "./pages/About/About";
 
 const routes = [
     {
