@@ -1,11 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import {App} from "./App";
 
+export const About = ()=>{
+    return <div>about</div>
+}
+
 const routes = [
     {
         id: 'Home',
         path: '/',
         component: <App />
+    },
+    {
+        id: 'About',
+        path: '/about',
+        component: <About />
     }
 ]
 
