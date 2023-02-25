@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import {App} from "./pages/Main/App";
 import {About} from "./pages/About/About";
+import {Calculator} from "./pages/Calculator/Calculator";
 
 const routes = [
     {
@@ -12,6 +13,11 @@ const routes = [
         id: 'About',
         path: '/about',
         component: <About />
+    },
+    {
+        id: 'Calculator',
+        path: '/calculator',
+        component: <Calculator />
     }
 ]
 
