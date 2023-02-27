@@ -1,0 +1,6 @@
+.header-main{
+    display: flex;
+    align-items: center;
+    background-color: rgba(91, 89, 89, 0.32);
+    height: 60px;
+}
