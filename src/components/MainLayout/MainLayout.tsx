@@ -1,7 +1,12 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import './MainLayout.css'
+import './MainLayout.scss'
 
-export const MainLayout = () => {
-    return <Outlet />
+interface IMainLayoutProps{
+    children: JSX.Element
+}
+
+export const MainLayout = ({children}:IMainLayoutProps) => {
+    return <div className='container'>
+        {children}
+    </div>
 }

@@ -26,12 +26,13 @@ const routes = [
 export const AppRouter = () => {
     return <BrowserRouter>
         <Header/>
-        <MainLayout/>
-        <Routes>
-            {routes
-                .map(({id, path, component}) =>
-                    <Route key={id} path={path} element={component}/>
-                )}
-        </Routes>
+        <MainLayout>
+            <Routes>
+                {routes
+                    .map(({id, path, component}) =>
+                        <Route key={id} path={path} element={component}/>
+                    )}
+            </Routes>
+        </MainLayout>
     </BrowserRouter>
 }
