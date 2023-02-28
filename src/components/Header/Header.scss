@@ -10,5 +10,13 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+
+        .nav{
+            display: flex;
+            column-gap: 20px;
+            a{
+                font-size: 24px;
+            }
+        }
     }
 }
