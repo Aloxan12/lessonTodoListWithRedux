@@ -6,7 +6,11 @@ export const Header = () => {
     return (
         <header className='header-main'>
             <div className='container header-wrap'>
-                <div className="title">Натяжные потолки</div>
+                <div className="title">
+                    <h1>
+                        Натяжные потолки
+                    </h1>
+                </div>
                 <nav className='nav'>
                     <NavLink to=''>Главная</NavLink>
                     <NavLink to=''>Калькулятор</NavLink>
