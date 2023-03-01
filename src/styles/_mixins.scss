@@ -1,0 +1,8 @@
+@use "sass:map";
+
+
+@mixin media($width){
+  @media (min-width: $width) {
+    @content;
+  }
+}
