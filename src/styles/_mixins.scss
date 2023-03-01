@@ -3,3 +3,9 @@
     @content;
   }
 }
+
+@mixin media-max($width){
+  @media (max-width: $width) {
+    @content;
+  }
+}
