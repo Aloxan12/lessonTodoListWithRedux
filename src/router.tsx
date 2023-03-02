@@ -4,6 +4,7 @@ import {About} from "./pages/About/About";
 import {Calculator} from "./pages/Calculator/Calculator";
 import {Header} from "./components/Header/Header";
 import {MainLayout} from "./components/MainLayout/MainLayout";
+import {Footer} from "./components/Footer/Footer";
 
 const routes = [
     {
@@ -34,5 +35,6 @@ export const AppRouter = () => {
                     )}
             </Routes>
         </MainLayout>
+        <Footer />
     </BrowserRouter>
 }
