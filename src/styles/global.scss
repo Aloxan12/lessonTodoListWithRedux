@@ -1,4 +1,7 @@
 @import "mixins";
+*{
+  box-sizing: border-box;
+}
 
 :root{
   --nav-font-size: 24px;
@@ -8,13 +11,13 @@
     h1{
       font-size: 22px;
     }
-    --nav-font-size: 16px;
+    --nav-font-size: 24px;
   }
   @include media(576px){
     h1{
       font-size: 24px;
     }
-    --nav-font-size: 16px;
+    --nav-font-size: 24px;
   }
   @include media(768px){
     h1{
