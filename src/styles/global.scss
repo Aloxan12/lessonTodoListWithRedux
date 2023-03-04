@@ -1,38 +1,39 @@
 @import "mixins";
-*{
+
+* {
   box-sizing: border-box;
 }
 
-:root{
+:root {
   --nav-font-size: 24px;
 
 
-  @include media(0px){
-    h1{
+  @include media(0px) {
+    h1 {
       font-size: 22px;
     }
     --nav-font-size: 24px;
   }
-  @include media(576px){
-    h1{
+  @include media(576px) {
+    h1 {
       font-size: 24px;
     }
     --nav-font-size: 24px;
   }
-  @include media(768px){
-    h1{
+  @include media(768px) {
+    h1 {
       font-size: 26px;
     }
     --nav-font-size: 18px;
   }
-  @include media(992px){
-    h1{
+  @include media(992px) {
+    h1 {
       font-size: 28px;
     }
     --nav-font-size: 20px;
   }
-  @include media(1440px){
-    h1{
+  @include media(1440px) {
+    h1 {
       font-size: 28px;
     }
     --nav-font-size: 24px;
