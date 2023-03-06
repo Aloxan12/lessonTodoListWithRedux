@@ -1,0 +1,10 @@
+.app-input{
+    display: flex;
+    flex-direction: column;
+
+    .input-label{
+        margin-bottom: 15px;
+        color: #363434;
+        font-size: 20px;
+    }
+}

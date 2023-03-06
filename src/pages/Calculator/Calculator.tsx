@@ -21,7 +21,7 @@ const CalculatorTitle = React.memo(()=>{
 
 const RoomForm = ()=>{
     return <div className='calculator-form'>
-        <AppInput />
+        <AppInput label={'Название помещения'} />
     </div>
 }
 
