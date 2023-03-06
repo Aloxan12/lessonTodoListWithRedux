@@ -10,10 +10,10 @@ export const Footer = () => {
         <div className='footer-wrap'>
             <div className='container'>
                 <div className='footer-block'>
-                    <a href="#" className='footer-link'><img src={telegram} alt='telegram'/></a>
-                    <a href="#" className='footer-link'><img src={instagram} alt='instagram'/></a>
-                    <a href="#" className='footer-link'><img src={phone} alt='phone'/></a>
-                    <a href="#" className='footer-link'><img src={viber} alt='viber'/></a>
+                    <a href="#" target='_blank' className='footer-link'><img src={telegram} alt='telegram'/></a>
+                    <a href="#" target='_blank' className='footer-link'><img src={instagram} alt='instagram'/></a>
+                    <a href="#" target='_blank' className='footer-link'><img src={phone} alt='phone'/></a>
+                    <a href="#" target='_blank' className='footer-link'><img src={viber} alt='viber'/></a>
                 </div>
             </div>
         </div>
