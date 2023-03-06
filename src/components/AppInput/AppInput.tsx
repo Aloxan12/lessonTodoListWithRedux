@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import './AppInput.scss'
 
-enum InputMaskType {
+export enum InputMaskType {
     integer = 'integer'
 }
 

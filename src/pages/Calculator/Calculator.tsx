@@ -1,6 +1,6 @@
 import React from 'react';
 import './Calculator.scss'
-import {AppInput} from "../../components/AppInput/AppInput";
+import {AppInput, InputMaskType} from "../../components/AppInput/AppInput";
 
 export const Calculator = () => {
 
@@ -21,7 +21,11 @@ const CalculatorTitle = React.memo(()=>{
 
 const RoomForm = ()=>{
     return <div className='calculator-form'>
-        <AppInput label={'Название помещения'} error={'Обязательное поле'} onChange={()=>{}}/>
+        <AppInput label={'Название помещения'} onChange={()=>{}}/>
+        <div className={'input-row'}>
+            <AppInput label={`Площадь помещения(м²)`} onChange={()=>{}} inputMask={InputMaskType.integer}/>
+            <AppInput label={'Количество светильников'} onChange={()=>{}} inputMask={InputMaskType.integer}/>
+        </div>
     </div>
 }
 

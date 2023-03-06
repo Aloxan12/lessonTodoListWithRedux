@@ -7,6 +7,7 @@
 
 :root {
   --nav-font-size: 24px;
+  --calculator-form-width: 50%;
 
 
   @include media(0px) {
@@ -14,29 +15,42 @@
       font-size: 22px;
     }
     --nav-font-size: 24px;
+    --calculator-form-width: 100%;
   }
   @include media(576px) {
     h1 {
       font-size: 24px;
     }
     --nav-font-size: 24px;
+    --calculator-form-width: 100%;
   }
   @include media(768px) {
     h1 {
       font-size: 26px;
     }
     --nav-font-size: 18px;
+    --calculator-form-width: 100%;
   }
   @include media(992px) {
     h1 {
       font-size: 28px;
     }
     --nav-font-size: 20px;
+    --calculator-form-width: 70%;
   }
   @include media(1440px) {
     h1 {
       font-size: 28px;
     }
     --nav-font-size: 24px;
+  }
+}
+
+.input-row{
+  width: 100%;
+  display: flex;
+  column-gap: 20px;
+  .app-input{
+    width: calc(50% - 10px);
   }
 }
