@@ -24,7 +24,7 @@ const RoomForm = ()=>{
         <AppInput label={'Название помещения'} onChange={()=>{}}/>
         <div className={'input-row'}>
             <AppInput label={`Площадь помещения(м²)`} onChange={()=>{}} inputMask={InputMaskType.integer}/>
-            <AppInput label={'Количество светильников'} onChange={()=>{}} inputMask={InputMaskType.integer}/>
+            <AppInput label={'Количество светильников(Шт.)'} onChange={()=>{}} inputMask={InputMaskType.integer}/>
         </div>
     </div>
 }
