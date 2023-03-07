@@ -1,6 +1,8 @@
 import React, {useCallback, useState} from 'react';
 import './Calculator.scss'
 import {AppInput, InputMaskType} from "../../components/AppInput/AppInput";
+import {AppCheckbox} from "../../components/AppCheckbox/AppCheckbox";
+import {AppToggle} from "../../components/AppToggle/AppToggle";
 
 export const Calculator = () => {
     return (
@@ -23,13 +25,15 @@ interface IRoom {
     title: string
     lampCount: number
     square: number
+    chandelier: boolean
 }
 
 const RoomForm = React.memo(() => {
     const [newRoom, setNewRoom] = useState<IRoom>({
         title: '',
         square: 0,
-        lampCount: 0
+        lampCount: 0,
+        chandelier: false
     })
 
     const changeTitleHandler = useCallback((value: string) => setNewRoom(prevState => ({
@@ -44,6 +48,10 @@ const RoomForm = React.memo(() => {
     const changeLampCountHandler = useCallback((value: string) => setNewRoom(prevState => ({
         ...prevState,
         lampCount: Number(value)
+    })), [])
+    const changeChandelierHandler = useCallback((value: boolean) => setNewRoom(prevState => ({
+        ...prevState,
+        chandelier: value
     })), [])
 
     return <div className='calculator-form'>
@@ -65,6 +73,8 @@ const RoomForm = React.memo(() => {
                 inputMask={InputMaskType.integer}
             />
         </div>
+        <AppCheckbox value={newRoom.chandelier} onChange={changeChandelierHandler} id={'la'} text={'Добавить люстру'}/>
+        <AppToggle value={newRoom.chandelier} onChange={changeChandelierHandler}/>
     </div>
 })
 

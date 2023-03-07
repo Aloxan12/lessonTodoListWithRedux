@@ -1,0 +1,74 @@
+
+$transition: all ease 0.5s;
+
+.toggle-wrap{
+    display: inline-flex;
+    align-items: center;
+    &>span{
+        color: black;
+        font-size: 18px;
+        margin-left: 15px;
+    }
+    label.checkbox-slider {
+        position: relative;
+        display: inline-block;
+        min-width: 51px;
+        height: 28px;
+        margin: 0;
+
+        input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 12px;
+            background-color: gray;
+            transition: $transition;
+            box-shadow: inset -1px -1px 1px rgba(255, 255, 255, 0.25), inset 0px 1px 1px rgba(0, 0, 0, 0.3);
+        }
+
+        .active-not{
+            cursor: default;
+        }
+
+        .slider:before {
+            content: "нет";
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            height: 28px;
+            width: 34px;
+            top: -10%;
+            padding-bottom: 2px;
+            font-weight: 450;
+            color: #fff;
+            background-color: #ccd0d4;
+            transition: $transition;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), inset -1px -1px 1px rgba(0, 0, 0, 0.15), inset 1px 1px 1px rgba(255, 255, 255, 0.15);
+        }
+
+        input:checked + .slider:before {
+            content: "да";
+            -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+            background-color: #33d423;
+        }
+    }
+
+    label.checkbox-is-delete{
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: auto;
+    }
+}
