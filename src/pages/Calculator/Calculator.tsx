@@ -32,6 +32,12 @@ const RoomForm = () => {
         square: 0,
         lampCount: 0
     })
+
+    const changeTitleHandler = useCallback((value: string) => setNewRoom(prevState => ({
+        ...prevState,
+        title: value
+    })), [])
+
     const changeSquareHandler = useCallback((value: string) => setNewRoom(prevState => ({
         ...prevState,
         square: Number(value)
@@ -42,13 +48,23 @@ const RoomForm = () => {
     })), [])
 
     return <div className='calculator-form'>
-        <AppInput label={'Название помещения'} onChange={() => {
-        }}/>
+        <AppInput
+            value={newRoom.title}
+            label={'Название помещения'}
+            onChange={changeTitleHandler}/>
         <div className={'input-row'}>
-            <AppInput value={newRoom.square} label={`Площадь помещения(м²)`} onChange={changeSquareHandler}
-                      inputMask={InputMaskType.integer}/>
-            <AppInput value={newRoom.lampCount} label={'Количество светильников(Шт.)'} onChange={changeLampCountHandler}
-                      inputMask={InputMaskType.integer}/>
+            <AppInput
+                value={newRoom.square}
+                label={`Площадь помещения(м²)`}
+                onChange={changeSquareHandler}
+                inputMask={InputMaskType.integer}
+            />
+            <AppInput
+                value={newRoom.lampCount}
+                label={'Количество светильников(Шт.)'}
+                onChange={changeLampCountHandler}
+                inputMask={InputMaskType.integer}
+            />
         </div>
     </div>
 }
