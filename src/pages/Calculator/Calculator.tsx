@@ -25,6 +25,7 @@ interface IRoom {
     lampCount: number
     square: number
     chandelier: boolean
+    cornice: boolean
 }
 
 const RoomForm = React.memo(() => {
@@ -32,7 +33,8 @@ const RoomForm = React.memo(() => {
         title: '',
         square: 0,
         lampCount: 0,
-        chandelier: false
+        chandelier: false,
+        cornice: false
     })
 
     const changeTitleHandler = useCallback((value: string) => setNewRoom(prevState => ({
@@ -51,6 +53,10 @@ const RoomForm = React.memo(() => {
     const changeChandelierHandler = useCallback((value: boolean) => setNewRoom(prevState => ({
         ...prevState,
         chandelier: value
+    })), [])
+    const changeCorniceHandler = useCallback((value: boolean) => setNewRoom(prevState => ({
+        ...prevState,
+        cornice: value
     })), [])
 
     return <div className='calculator-form'>
@@ -72,11 +78,18 @@ const RoomForm = React.memo(() => {
                 inputMask={InputMaskType.integer}
             />
         </div>
-        <AppToggle
-            value={newRoom.chandelier}
-            onChange={changeChandelierHandler}
-            text={'Добавить люстру'}
-        />
+        <div className={'checkbox-row'}>
+            <AppToggle
+                value={newRoom.chandelier}
+                onChange={changeChandelierHandler}
+                text={'Добавить люстру'}
+            />
+            <AppToggle
+                value={newRoom.cornice}
+                onChange={changeCorniceHandler}
+                text={'Добавить карниз'}
+            />
+        </div>
     </div>
 })
 

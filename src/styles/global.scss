@@ -54,3 +54,10 @@
     width: calc(50% - 10px);
   }
 }
+.checkbox-row{
+  display: flex;
+  column-gap: 20px;
+  .toggle-wrap{
+    width: calc(50% - 10px);
+  }
+}
