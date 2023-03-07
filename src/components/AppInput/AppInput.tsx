@@ -10,7 +10,7 @@ interface IAppInputProps {
     error?: string
     placeholder?: string
     inputMask?: InputMaskType
-    value?: string | null
+    value?: string | number | null
     onChange: (value: string | null) => void
 }
 

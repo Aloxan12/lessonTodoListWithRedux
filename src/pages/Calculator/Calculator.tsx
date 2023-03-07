@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Calculator.scss'
 import {AppInput, InputMaskType} from "../../components/AppInput/AppInput";
 
@@ -19,12 +19,24 @@ const CalculatorTitle = React.memo(()=>{
     </div>
 })
 
+interface IRoom{
+    id?: string
+    title: string
+    lampCount: number
+    square: number
+}
+
 const RoomForm = ()=>{
+    const [newRoom, setNewRoom] = useState<IRoom>({
+        title:'',
+        square: 0,
+        lampCount: 0
+    })
     return <div className='calculator-form'>
         <AppInput label={'Название помещения'} onChange={()=>{}}/>
         <div className={'input-row'}>
-            <AppInput label={`Площадь помещения(м²)`} onChange={()=>{}} inputMask={InputMaskType.integer}/>
-            <AppInput label={'Количество светильников(Шт.)'} onChange={()=>{}} inputMask={InputMaskType.integer}/>
+            <AppInput value={newRoom.square} label={`Площадь помещения(м²)`} onChange={()=>{}} inputMask={InputMaskType.integer}/>
+            <AppInput value={newRoom.lampCount} label={'Количество светильников(Шт.)'} onChange={()=>{}} inputMask={InputMaskType.integer}/>
         </div>
     </div>
 }
