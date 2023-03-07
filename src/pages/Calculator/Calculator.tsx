@@ -23,6 +23,8 @@ interface IRoom {
     id?: string
     title: string
     lampCount: number
+    pipeCount: number
+    trackLightCount: number
     square: number
     chandelier: boolean
     cornice: boolean
@@ -33,6 +35,8 @@ const RoomForm = React.memo(() => {
         title: '',
         square: 0,
         lampCount: 0,
+        pipeCount: 0,
+        trackLightCount: 0,
         chandelier: false,
         cornice: false
     })
@@ -41,7 +45,6 @@ const RoomForm = React.memo(() => {
         ...prevState,
         title: value
     })), [])
-
     const changeSquareHandler = useCallback((value: string) => setNewRoom(prevState => ({
         ...prevState,
         square: Number(value)
@@ -49,6 +52,10 @@ const RoomForm = React.memo(() => {
     const changeLampCountHandler = useCallback((value: string) => setNewRoom(prevState => ({
         ...prevState,
         lampCount: Number(value)
+    })), [])
+    const changePipeCountHandler = useCallback((value: string) => setNewRoom(prevState => ({
+        ...prevState,
+        pipeCount: Number(value)
     })), [])
     const changeChandelierHandler = useCallback((value: boolean) => setNewRoom(prevState => ({
         ...prevState,
@@ -75,6 +82,20 @@ const RoomForm = React.memo(() => {
                 value={newRoom.lampCount}
                 label={'Количество светильников(Шт.)'}
                 onChange={changeLampCountHandler}
+                inputMask={InputMaskType.integer}
+            />
+        </div>
+        <div className={'input-row'}>
+            <AppInput
+                value={newRoom.square}
+                label={`Трековый светильник (м.п)`}
+                onChange={changeSquareHandler}
+                inputMask={InputMaskType.integer}
+            />
+            <AppInput
+                value={newRoom.lampCount}
+                label={'Труба под обход батареи(Шт.)'}
+                onChange={changePipeCountHandler}
                 inputMask={InputMaskType.integer}
             />
         </div>
