@@ -60,4 +60,11 @@
   .toggle-wrap{
     width: calc(50% - 10px);
   }
+  @include media-max(576px){
+    row-gap: 30px;
+    flex-wrap: wrap;
+    .toggle-wrap{
+      width: 100%;
+    }
+  }
 }
