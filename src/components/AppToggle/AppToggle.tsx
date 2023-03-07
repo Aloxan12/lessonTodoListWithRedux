@@ -5,12 +5,14 @@ interface IAppToggle {
     value: boolean
     disabled?: boolean
     onChange?: (value: boolean) => void
+    text?:string
 }
 
 export const AppToggle = ({
                               value,
                               onChange,
                               disabled,
+                              text
                           }: IAppToggle) => {
     const onChangeHandler = !!onChange
         ? (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +33,7 @@ export const AppToggle = ({
                 />
                 <span className={`slider${!onChange ? ' active-not' : ''}`} />
             </label>
-            <span>Добавить люстру</span>
+            {!!text && <span> {text}</span>}
         </div>
     )
 }

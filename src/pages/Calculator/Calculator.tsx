@@ -1,7 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import './Calculator.scss'
 import {AppInput, InputMaskType} from "../../components/AppInput/AppInput";
-import {AppCheckbox} from "../../components/AppCheckbox/AppCheckbox";
 import {AppToggle} from "../../components/AppToggle/AppToggle";
 
 export const Calculator = () => {
@@ -73,8 +72,11 @@ const RoomForm = React.memo(() => {
                 inputMask={InputMaskType.integer}
             />
         </div>
-        <AppCheckbox value={newRoom.chandelier} onChange={changeChandelierHandler} id={'la'} text={'Добавить люстру'}/>
-        <AppToggle value={newRoom.chandelier} onChange={changeChandelierHandler}/>
+        <AppToggle
+            value={newRoom.chandelier}
+            onChange={changeChandelierHandler}
+            text={'Добавить люстру'}
+        />
     </div>
 })
 
