@@ -11,7 +11,7 @@ interface IAppInputProps {
     placeholder?: string
     inputMask?: InputMaskType
     value?: string | number | null
-    onChange: (value: string | null) => void
+    onChange: (value: string) => void
 }
 
 export const AppInput = React.memo(({label, error, placeholder, value, inputMask, onChange}: IAppInputProps) => {
