@@ -3,7 +3,6 @@ import './Calculator.scss'
 import {AppInput, InputMaskType} from "../../components/AppInput/AppInput";
 
 export const Calculator = () => {
-
     return (
         <div className='calculator-wrap'>
             <CalculatorTitle/>
@@ -26,7 +25,7 @@ interface IRoom {
     square: number
 }
 
-const RoomForm = () => {
+const RoomForm = React.memo(() => {
     const [newRoom, setNewRoom] = useState<IRoom>({
         title: '',
         square: 0,
@@ -67,5 +66,5 @@ const RoomForm = () => {
             />
         </div>
     </div>
-}
+})
 
