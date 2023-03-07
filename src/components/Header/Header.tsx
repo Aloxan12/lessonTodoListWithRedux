@@ -2,6 +2,21 @@ import React, {useCallback, useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
 
+const navbarRoute = [
+    {
+       title: 'Главная',
+       path: '/'
+    },
+    {
+        title: 'Калькулятор',
+        path: '/calculator'
+    },
+    {
+        title: 'Мои Работы',
+        path: '/'
+    }
+]
+
 export const Header = React.memo(() => {
     const [isShowMenu, setIsShowMenu] = useState(false)
     const onChangeShowHandler = useCallback(()=>{
@@ -20,9 +35,13 @@ export const Header = React.memo(() => {
                         <div />
                     </div>
                     <nav className={`nav ${isShowMenu ? 'active-nav' : ''}`}>
-                        <NavLink to='/'>Главная</NavLink>
-                        <NavLink to='/calculator'>Калькулятор</NavLink>
-                        <NavLink to=''>Мои Работы</NavLink>
+                        {navbarRoute.map((item)=>{
+                            return <NavLink
+                                to={item.path}
+                                key={item.title}
+                                onClick={onChangeShowHandler}
+                            >{item.title}</NavLink>
+                        })}
                     </nav>
                 </div>
             </div>
