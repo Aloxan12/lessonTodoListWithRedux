@@ -2,6 +2,7 @@ import React, {useCallback, useState} from 'react';
 import './Calculator.scss'
 import {AppInput, InputMaskType} from "../../components/AppInput/AppInput";
 import {AppToggle} from "../../components/AppToggle/AppToggle";
+import {AppDropdown} from "../../components/AppDropdown/AppDropdown";
 
 export const Calculator = () => {
     return (
@@ -111,6 +112,7 @@ const RoomForm = React.memo(() => {
                 text={'Добавить карниз'}
             />
         </div>
+        <AppDropdown value={null} onChange={()=>{}} data={['res', 'rew', 'col']} />
     </div>
 })
 
