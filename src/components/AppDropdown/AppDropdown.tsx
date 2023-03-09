@@ -82,7 +82,7 @@ export const AppDropdown = <T, TKey extends keyof T>({
     <div
       className={`app-dropdown ${active ? `active` : ''} ${
         paginationMode ? `pagination-mode` : ''
-      }`}
+      } ${disabled ? 'disable' : ''}`}
       ref={refDropDown}
     >
       <AppInput
