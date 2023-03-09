@@ -12,8 +12,8 @@ const navbarRoute = [
         path: '/calculator'
     },
     {
-        title: 'Мои Работы',
-        path: '/'
+        title: 'Корзина',
+        path: '/basket'
     }
 ]
 
@@ -40,6 +40,7 @@ export const Header = React.memo(() => {
                                 to={item.path}
                                 key={item.title}
                                 onClick={onChangeShowHandler}
+                                className={({isActive})=> isActive ? 'active-link' : ''}
                             >{item.title}</NavLink>
                         })}
                     </nav>

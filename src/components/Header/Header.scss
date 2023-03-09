@@ -18,7 +18,7 @@ $font-size-nav-item: 24px;
     .nav-wrap {
       .nav {
         display: flex;
-        column-gap: 20px;
+        column-gap: 40px;
 
         a {
           font-size: var(--nav-font-size);
@@ -26,8 +26,14 @@ $font-size-nav-item: 24px;
           padding-bottom: 5px;
 
           &:hover {
+            transition: 0.4s;
             border-color: white;
           }
+        }
+        .active-link{
+          color: white;
+          pointer-events: none;
+          border-color: white;
         }
       }
 
