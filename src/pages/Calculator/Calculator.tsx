@@ -112,14 +112,15 @@ const RoomForm = React.memo(() => {
                 text={'Добавить карниз'}
             />
         </div>
-        <div className={'dropdown-row'}>
-            <div className='app-dropdown' />
+        {newRoom.cornice && <div className={'dropdown-row'}>
+            <div className='app-dropdown'/>
             <AppDropdown
                 label={'Выберетие тип карниза'}
                 value={null}
-                onChange={()=>{}} data={['res', 'rew', 'col']}
+                onChange={() => {
+                }} data={['res', 'rew', 'col']}
             />
-        </div>
+        </div>}
     </div>
 })
 

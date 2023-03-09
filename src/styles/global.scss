@@ -66,6 +66,12 @@
   .app-dropdown{
     width: calc(50% - 10px);
   }
+  @include media-max(576px){
+    flex-wrap: wrap;
+    .app-dropdown{
+      width: 100%;
+    }
+  }
 }
 
 .checkbox-row{
