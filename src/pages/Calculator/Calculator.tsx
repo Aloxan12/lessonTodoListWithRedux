@@ -20,6 +20,10 @@ const CalculatorTitle = React.memo(() => {
     </div>
 })
 
+type CorniceType = 'Открытая ниша' |
+    'Ниша с аллюминевым карнизом (закрытая ниша)' |
+    'Потолочный'
+
 interface IRoom {
     id?: string
     title: string
@@ -29,6 +33,7 @@ interface IRoom {
     square: number
     chandelier: boolean
     cornice: boolean
+    corniceType: CorniceType
 }
 
 const RoomForm = React.memo(() => {
@@ -39,7 +44,8 @@ const RoomForm = React.memo(() => {
         pipeCount: 0,
         trackLightCount: 0,
         chandelier: false,
-        cornice: false
+        cornice: false,
+        corniceType: 'Открытая ниша'
     })
 
     const changeTitleHandler = useCallback((value: string) => setNewRoom(prevState => ({
@@ -65,6 +71,10 @@ const RoomForm = React.memo(() => {
     const changeCorniceHandler = useCallback((value: boolean) => setNewRoom(prevState => ({
         ...prevState,
         cornice: value
+    })), [])
+    const changeCorniceTypeHandler = useCallback((value: CorniceType) => setNewRoom(prevState => ({
+        ...prevState,
+        corniceType: value
     })), [])
 
     return <div className='calculator-form'>
@@ -116,9 +126,8 @@ const RoomForm = React.memo(() => {
             <div className='app-dropdown'/>
             <AppDropdown
                 label={'Выберетие тип карниза'}
-                value={null}
-                onChange={() => {
-                }}
+                value={newRoom.corniceType}
+                onChange={changeCorniceTypeHandler}
                 data={['Открытая ниша', 'Ниша с аллюминевым карнизом (закрытая ниша)', 'Потолочный']}
             />
         </div>}

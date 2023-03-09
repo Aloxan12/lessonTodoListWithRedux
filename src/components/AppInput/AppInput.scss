@@ -18,6 +18,8 @@
         border-radius: 4px 4px 0 0;
         box-shadow: inset 0 2px 2px rgba(32, 56, 85, 0.44);
         margin-top: auto;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .input-error{
         position: absolute;
@@ -38,5 +40,8 @@
             transition: .5s;
             transform: rotate(180deg);
         }
+    }
+    .ico-right{
+        padding-right: 60px;
     }
 }

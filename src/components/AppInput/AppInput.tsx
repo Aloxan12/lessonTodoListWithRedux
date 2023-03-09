@@ -67,7 +67,7 @@ export const AppInput = React.memo(({
                 {label && <label className='input-label'>{label}</label>}
                 {dropdownInput && <img src={icoArrowDown} className={`dropdown-ico-arrow ${dropdownActive ? 'active' : ''}`} alt={'arrow-ico'}/>}
                 <input
-                    className='input-base'
+                    className={`input-base ${dropdownInput ? 'ico-right': ''}`}
                     placeholder={placeholder}
                     value={value || value === 0 ? value : ''}
                     onChange={onChangeHandler}
