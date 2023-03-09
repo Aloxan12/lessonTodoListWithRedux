@@ -51,10 +51,9 @@ export const AppInput = React.memo(({
             let result = ''
             switch (inputMask) {
                 case InputMaskType.integer: {
-                    const integerVal = e.currentTarget.value
+                    result = e.currentTarget.value
                         .replace(/[^0-9]/g, '')
                         .replace(/^(0)([0-9])+/g, '$2')
-                    result = integerVal
                     break
                 }
                 default:
@@ -70,7 +69,7 @@ export const AppInput = React.memo(({
                 <input
                     className='input-base'
                     placeholder={placeholder}
-                    value={value || ''}
+                    value={value || value === 0 ? value : ''}
                     onChange={onChangeHandler}
                     disabled={!!disabled}
                 />
