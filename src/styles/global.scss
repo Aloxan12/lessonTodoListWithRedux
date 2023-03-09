@@ -10,6 +10,10 @@
   --calculator-form-width: 50%;
 
 
+  --header-color-bg:  rgba(91, 89, 89, 0.32);
+  --main-color-bg: #363434;
+
+
   @include media(0px) {
     h1 {
       font-size: 22px;

@@ -6,7 +6,7 @@ interface IMainLayoutProps{
 }
 
 export const MainLayout = ({children}:IMainLayoutProps) => {
-    return <div className='container'>
+    return <main className='container'>
         {children}
-    </div>
+    </main>
 }

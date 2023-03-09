@@ -7,7 +7,7 @@ import viber from '../../utils/icons/viber.png'
 
 export const Footer = () => {
     return (
-        <div className='footer-wrap'>
+        <footer className='footer-wrap'>
             <div className='container'>
                 <div className='footer-block'>
                     <a href="#" target='_blank' className='footer-link'><img src={telegram} alt='telegram'/></a>
@@ -16,6 +16,6 @@ export const Footer = () => {
                     <a href="#" target='_blank' className='footer-link'><img src={viber} alt='viber'/></a>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 };

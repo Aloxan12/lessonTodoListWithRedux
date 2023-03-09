@@ -3,7 +3,7 @@
   height: 70px;
   bottom: 0;
   position: absolute;
-  background-color: rgba(91, 89, 89, 0.32);
+  background-color: var(--header-color-bg);
   z-index: 5;
 
   .footer-block {

@@ -3,7 +3,7 @@
 body {
   margin: 0;
   box-sizing: border-box;
-  background-color: #363434;
+  background-color: var(--main-color-bg);
   position: relative;
   min-height: 100vh;
   padding-bottom: 65px;
