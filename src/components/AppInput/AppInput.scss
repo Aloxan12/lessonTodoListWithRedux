@@ -26,4 +26,17 @@
         bottom: -4px;
         transform: translate(0%, 100%);
     }
+    .dropdown-ico-arrow{
+        position: absolute;
+        top: 50%;
+        right: 4%;
+        color: #ccc;
+        width: 35px;
+        opacity: 0.5;
+        transition: .5s;
+        &.active{
+            transition: .5s;
+            transform: rotate(180deg);
+        }
+    }
 }

@@ -1,5 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import './AppInput.scss'
+import icoArrowDown from '../../utils/icons/arrow-down.png'
 
 export enum InputMaskType {
     integer = 'integer'
@@ -65,6 +66,7 @@ export const AppInput = React.memo(({
         return (
             <div className='app-input' onClick={onClick}>
                 {label && <label className='input-label'>{label}</label>}
+                {dropdownInput && <img src={icoArrowDown} className={`dropdown-ico-arrow ${dropdownActive ? 'active' : ''}`} alt={'arrow-ico'}/>}
                 <input
                     className='input-base'
                     placeholder={placeholder}

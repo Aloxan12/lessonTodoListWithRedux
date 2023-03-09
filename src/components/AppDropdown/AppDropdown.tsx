@@ -22,7 +22,7 @@ type AppDropdownType<T, TKey extends keyof T> = IAppDropdownBase<T, TKey>;
 export const AppDropdown = <T, TKey extends keyof T>({
   data,
   disabled = false,
-  resetValueHandler,
+  resetValueHandler = undefined,
   error,
   placeholder,
   label,

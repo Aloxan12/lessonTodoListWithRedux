@@ -58,6 +58,16 @@
     width: calc(50% - 10px);
   }
 }
+
+.dropdown-row{
+  width: 100%;
+  display: flex;
+  column-gap: 20px;
+  .app-dropdown{
+    width: calc(50% - 10px);
+  }
+}
+
 .checkbox-row{
   display: flex;
   column-gap: 20px;
