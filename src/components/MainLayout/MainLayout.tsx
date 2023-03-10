@@ -6,7 +6,7 @@ interface IMainLayoutProps{
 }
 
 export const MainLayout = ({children}:IMainLayoutProps) => {
-    return <main className='container'>
+    return <main className='container main-margin'>
         {children}
     </main>
 }
