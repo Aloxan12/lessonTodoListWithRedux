@@ -26,9 +26,9 @@ export const Header = React.memo(() => {
         <header className='header-main'>
             <div className='container header-wrap'>
                 <div className="title">
-                    <h1>
+                    <h2>
                         Натяжные потолки
-                    </h1>
+                    </h2>
                 </div>
                 <div className="nav-wrap">
                     <div className='burger-menu' onClick={onChangeShowHandler}>

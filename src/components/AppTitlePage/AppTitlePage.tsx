@@ -8,6 +8,7 @@ interface IAppTitlePageProps{
 export const AppTitlePage = React.memo(({title}:IAppTitlePageProps) => {
     return (
         <header className='title-page-wrap'>
+            <div className='line' />
             <h1>{title}</h1>
             <div className='line' />
         </header>

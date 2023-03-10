@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+h1{
+  font-weight: 400;
+}
+
 :root {
   --nav-font-size: 24px;
   --calculator-form-width: 50%;
@@ -44,7 +48,7 @@
   }
   @include media(1440px) {
     h1 {
-      font-size: 28px;
+      font-size: 32px;
     }
     --nav-font-size: 24px;
   }
