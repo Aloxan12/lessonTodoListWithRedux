@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './Calculator.scss'
 import {AppInput, InputMaskType} from "../../components/AppInput/AppInput";
 import {AppToggle} from "../../components/AppToggle/AppToggle";
@@ -47,6 +47,22 @@ const RoomForm = React.memo(() => {
         cornice: false,
         corniceType: 'Открытая ниша'
     })
+
+    const [rate, setRate] = useState<null | number>(null);
+
+    useEffect(() => {
+        fetch(
+            "https://www.nbrb.by/api/exrates/rates/431", {method:'Get'}
+        )
+            .then((response) => response.json())
+            .then((data) => {
+
+
+                console.log('data', data)
+            });
+    }, []);
+    console.log('rate', rate)
+
 
     const changeTitleHandler = useCallback((value: string) => setNewRoom(prevState => ({
         ...prevState,
@@ -130,7 +146,16 @@ const RoomForm = React.memo(() => {
                 onChange={changeCorniceTypeHandler}
                 data={['Открытая ниша', 'Ниша с аллюминевым карнизом (закрытая ниша)', 'Потолочный']}
             />
-        </div>}
+        </div>
+        }
+        <RoomPrice />
     </div>
 })
 
+
+const RoomPrice = () => {
+    return <div className='room-price-wrap'>
+        <span><b>Итого:</b></span>
+        <span><b>0 руб.</b></span>
+    </div>
+}
