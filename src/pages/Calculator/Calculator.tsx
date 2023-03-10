@@ -4,6 +4,7 @@ import {AppInput, InputMaskType} from "../../components/AppInput/AppInput";
 import {AppToggle} from "../../components/AppToggle/AppToggle";
 import {AppDropdown} from "../../components/AppDropdown/AppDropdown";
 import {AppButton} from "../../components/AppButton/AppButton";
+import {AppTitlePage} from "../../components/AppTitlePage/AppTitlePage";
 
 export const Calculator = () => {
     return (
@@ -16,7 +17,7 @@ export const Calculator = () => {
 
 const CalculatorTitle = React.memo(() => {
     return <div className='calculator-wrap'>
-        <h1>Калькулятор</h1>
+        <AppTitlePage title='Калькулятор' />
         <h3>Здесь вы можете рассчитать примерную смоимость.</h3>
     </div>
 })
