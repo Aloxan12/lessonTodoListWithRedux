@@ -20,28 +20,28 @@ h1{
 
   @include media(0px) {
     h1 {
-      font-size: 22px;
+      font-size: 24px;
     }
     --nav-font-size: 24px;
     --calculator-form-width: 100%;
   }
   @include media(576px) {
     h1 {
-      font-size: 24px;
+      font-size: 26px;
     }
     --nav-font-size: 24px;
     --calculator-form-width: 100%;
   }
   @include media(768px) {
     h1 {
-      font-size: 26px;
+      font-size: 28px;
     }
     --nav-font-size: 18px;
     --calculator-form-width: 100%;
   }
   @include media(992px) {
     h1 {
-      font-size: 28px;
+      font-size: 30px;
     }
     --nav-font-size: 20px;
     --calculator-form-width: 70%;
