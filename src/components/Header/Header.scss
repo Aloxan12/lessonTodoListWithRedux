@@ -12,6 +12,7 @@ $font-size-nav-item: 24px;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
 
   .header-wrap {
     display: flex;
@@ -60,7 +61,7 @@ $font-size-nav-item: 24px;
         }
         .nav {
           transform: translateX(-100%);
-          z-index: 2;
+          z-index: 5;
           width: 50vw;
           height: calc(100vh - 140px);
           position: fixed;
