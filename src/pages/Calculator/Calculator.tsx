@@ -3,6 +3,7 @@ import './Calculator.scss'
 import {AppInput, InputMaskType} from "../../components/AppInput/AppInput";
 import {AppToggle} from "../../components/AppToggle/AppToggle";
 import {AppDropdown} from "../../components/AppDropdown/AppDropdown";
+import {AppButton} from "../../components/AppButton/AppButton";
 
 export const Calculator = () => {
     return (
@@ -56,12 +57,9 @@ const RoomForm = React.memo(() => {
         )
             .then((response) => response.json())
             .then((data) => {
-
-
-                console.log('data', data)
+                setRate(data.Cur_OfficialRate)
             });
     }, []);
-    console.log('rate', rate)
 
 
     const changeTitleHandler = useCallback((value: string) => setNewRoom(prevState => ({
@@ -149,6 +147,9 @@ const RoomForm = React.memo(() => {
         </div>
         }
         <RoomPrice />
+        <div>
+            <AppButton title='Добавить в карзину' onClick={()=>{}} />
+        </div>
     </div>
 })
 
