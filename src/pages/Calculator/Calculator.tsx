@@ -147,7 +147,7 @@ const RoomForm = React.memo(() => {
         </div>
         }
         <RoomPrice />
-        <div>
+        <div className='buttons-wrap'>
             <AppButton title='Добавить в карзину' onClick={()=>{}} />
         </div>
     </div>
