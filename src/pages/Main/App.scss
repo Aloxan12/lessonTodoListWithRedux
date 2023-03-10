@@ -1,3 +1,42 @@
 .my-experience-wrap{
   display: flex;
+  justify-content: space-between;
+  column-gap: 50px;
+
+  section{
+    flex: 1;
+    padding: 20px;
+    p{
+      font-size: 24px;
+    }
+  }
+  aside{
+    flex: 1;
+    padding: 20px;
+    img{
+      width: 100%;
+    }
+  }
+  @media (max-width: 992px) {
+    flex-direction: column-reverse;
+    section, aside{
+      padding: 10px;
+      &>p{
+        font-size: 20px;
+      }
+      aside{
+        &>img{
+          width: 50%;
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    section, aside{
+      padding: 10px;
+      &>p{
+        font-size: 18px;
+      }
+    }
+  }
 }

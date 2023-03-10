@@ -20,35 +20,35 @@ h1{
 
   @include media(0px) {
     h1 {
-      font-size: 24px;
+      font-size: 32px;
     }
     --nav-font-size: 24px;
     --calculator-form-width: 100%;
   }
   @include media(576px) {
     h1 {
-      font-size: 26px;
+      font-size: 34px;
     }
     --nav-font-size: 24px;
     --calculator-form-width: 100%;
   }
   @include media(768px) {
     h1 {
-      font-size: 28px;
+      font-size: 36px;
     }
     --nav-font-size: 18px;
     --calculator-form-width: 100%;
   }
   @include media(992px) {
     h1 {
-      font-size: 30px;
+      font-size: 38px;
     }
     --nav-font-size: 20px;
     --calculator-form-width: 70%;
   }
   @include media(1440px) {
     h1 {
-      font-size: 32px;
+      font-size: 40px;
     }
     --nav-font-size: 24px;
   }

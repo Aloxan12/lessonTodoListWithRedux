@@ -1,6 +1,7 @@
 import React from "react"
 import './App.scss'
 import {AppTitlePage} from "../../components/AppTitlePage/AppTitlePage";
+import sergeyPhoto from '../../utils/images/sergey.png'
 
 export const App = ()=>{
     return <React.Fragment>
@@ -11,7 +12,9 @@ export const App = ()=>{
                 </p>
                 <p>Я работаю только с высококачественными материалами и использую современное оборудование, что гарантирует моим клиентам высокое качество и надежность установки натяжных потолков. Если вы ищете профессионала для установки натяжных потолков, то я готов предложить свои услуги. Свяжитесь со мной, и мы вместе найдем наилучшее решение для вашего помещения.</p>
             </section>
-            <aside></aside>
+            <aside>
+                <img src={sergeyPhoto} alt='сергей'/>
+            </aside>
         </div>
     </React.Fragment>
 }
