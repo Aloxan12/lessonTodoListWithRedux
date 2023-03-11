@@ -9,6 +9,7 @@
     border-radius: 8px;
 
     &:hover{
+        transition: .5s;
         background-color: #9f9c87;
     }
     &:active{

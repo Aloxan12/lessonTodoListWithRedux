@@ -5,14 +5,16 @@ body {
   box-sizing: border-box;
   background-color: var(--main-color-bg);
   position: relative;
-  min-height: 100vh;
   padding-bottom: 65px;
 }
 
 * {
   text-decoration: none;
   //color: #ded3d3;
-  color: var(--black-color);
+  color: var(--dark-gray-color);
+  &:not(a){
+    color: var(--black-color)
+  }
 }
 
 .container {

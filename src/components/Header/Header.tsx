@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
+import logo from '../../utils/images/logo.png'
 
 const navbarRoute = [
     {
@@ -26,9 +27,7 @@ export const Header = React.memo(() => {
         <header className='header-main'>
             <div className='container header-wrap'>
                 <div className="title">
-                    <h2>
-                        Натяжные потолки
-                    </h2>
+                    <img src={logo} alt='logo' className='logo'/>
                 </div>
                 <div className="nav-wrap">
                     <div className='burger-menu' onClick={onChangeShowHandler}>

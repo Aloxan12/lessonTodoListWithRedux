@@ -20,6 +20,15 @@ $font-size-nav-item: 24px;
     align-items: center;
     width: 100%;
 
+    .title{
+      display: flex;
+      align-items: center;
+      .logo{
+        margin-top: 10px;
+        width: 90px;
+      }
+    }
+
     .nav-wrap {
       .nav {
         display: flex;
@@ -32,13 +41,14 @@ $font-size-nav-item: 24px;
 
           &:hover {
             transition: 0.4s;
-            border-color: var(--dark-gray-color);
+            color: var(--black-color);
+            border-color: var(--black-color);
           }
         }
         .active-link{
-          color: var(--dark-gray-color);
+          color: var(--black-color);
           pointer-events: none;
-          border-color: var(--dark-gray-color);
+          border-color: var(--black-color);
         }
       }
 
