@@ -1,7 +1,7 @@
 import React from "react"
 import './App.scss'
 import {AppTitlePage} from "../../components/AppTitlePage/AppTitlePage";
-import sergeyPhoto from '../../utils/images/sergey.png'
+import sergeyPhoto from '../../utils/images/sergey2.png'
 
 export const App = ()=>{
     return <React.Fragment>

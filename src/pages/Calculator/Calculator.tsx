@@ -106,7 +106,7 @@ const RoomForm = React.memo(() => {
             />
             <AppInput
                 value={newRoom.lampCount}
-                label={'Количество светильников(Шт.)'}
+                label={'Количество светильников(шт.)'}
                 onChange={changeLampCountHandler}
                 inputMask={InputMaskType.integer}
             />
@@ -114,13 +114,13 @@ const RoomForm = React.memo(() => {
         <div className={'input-row'}>
             <AppInput
                 value={newRoom.square}
-                label={`Трековый светильник (м.п)`}
+                label={`Трековый светильник(м.п.)`}
                 onChange={changeSquareHandler}
                 inputMask={InputMaskType.integer}
             />
             <AppInput
                 value={newRoom.lampCount}
-                label={'Труба под обход батареи(Шт.)'}
+                label={'Труба под обход батареи(шт.)'}
                 onChange={changePipeCountHandler}
                 inputMask={InputMaskType.integer}
             />

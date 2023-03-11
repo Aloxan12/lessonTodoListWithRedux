@@ -5,15 +5,17 @@
 
   section{
     flex: 1;
-    padding: 15px 15px 0 15px;
+    padding: 0 15px 0 95px;
     p{
-      font-size: 24px;
+      font-size: 20px;
     }
   }
   aside{
     flex: 1;
-    padding: 15px;
+    padding: 15px 15px 0 15px;
     text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
     img{
       width: 100%;
       max-width: 300px;
