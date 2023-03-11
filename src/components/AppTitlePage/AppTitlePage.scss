@@ -10,9 +10,12 @@
 
     .line{
         display: flex;
-        height: 3px;
-        width: 100%;
-        background-color: #ded3d3;
+        height: 2px;
+        width: 10%;
+        background-color: var(--black-color);
         margin: 5px;
+    }
+    .full-width{
+        width: 100%;
     }
 }

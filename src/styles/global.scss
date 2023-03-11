@@ -1,8 +1,10 @@
 @import "mixins";
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,700&display=swap');
 
 * {
   letter-spacing: 1px;
   box-sizing: border-box;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 h1{
@@ -14,8 +16,15 @@ h1{
   --calculator-form-width: 50%;
 
 
-  --header-color-bg: rgb(73, 71, 71);
-  --main-color-bg: #363434;
+  //--header-color-bg: rgb(73, 71, 71);
+  //--main-color-bg: #363434;
+
+  --header-color-bg: #CBC6B2;
+  --main-color-bg: #E6E2CF;
+
+  --black-color: #11002A;
+  --gray-color: #A2A1A1;
+  --dark-gray-color: #707070;
 
 
   @include media(0px) {

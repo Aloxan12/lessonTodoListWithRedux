@@ -4,11 +4,12 @@
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
-    background-color: #efefef;
+    background-color: var(--main-color-bg);
+    border: 1px solid #AFAB98;
     border-radius: 8px;
 
     &:hover{
-        background-color: white;
+        background-color: #9f9c87;
     }
     &:active{
         box-shadow: 0 0 10px 5px rgba(11, 11, 11, 0.34);

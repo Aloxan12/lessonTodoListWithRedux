@@ -11,7 +11,8 @@ body {
 
 * {
   text-decoration: none;
-  color: #ded3d3;
+  //color: #ded3d3;
+  color: var(--black-color);
 }
 
 .container {

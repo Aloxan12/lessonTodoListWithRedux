@@ -5,16 +5,18 @@
 
   section{
     flex: 1;
-    padding: 20px;
+    padding: 15px;
     p{
       font-size: 24px;
     }
   }
   aside{
     flex: 1;
-    padding: 20px;
+    padding: 15px;
+    text-align: center;
     img{
       width: 100%;
+      max-width: 300px;
     }
   }
   @media (max-width: 992px) {
@@ -27,9 +29,6 @@
       img{
         width: 50%;
       }
-    }
-    aside{
-      text-align: center;
     }
   }
   @media (max-width: 768px) {

@@ -10,7 +10,7 @@ export const AppTitlePage = React.memo(({title}:IAppTitlePageProps) => {
         <header className='title-page-wrap'>
             <div className='line' />
             <h1>{title}</h1>
-            <div className='line' />
+            <div className='line full-width' />
         </header>
     );
 })

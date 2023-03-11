@@ -149,7 +149,7 @@ const RoomForm = React.memo(() => {
         }
         <RoomPrice />
         <div className='buttons-wrap'>
-            <AppButton title='Добавить в карзину' onClick={()=>{}} />
+            <AppButton title='Добавить в корзину' onClick={()=>{}} />
         </div>
     </div>
 })
