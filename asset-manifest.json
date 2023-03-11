@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/potolki/static/css/main.28b9272f.chunk.css",
+    "main.js": "/potolki/static/js/main.1225021f.chunk.js",
+    "main.js.map": "/potolki/static/js/main.1225021f.chunk.js.map",
+    "runtime-main.js": "/potolki/static/js/runtime-main.8d072d01.js",
+    "runtime-main.js.map": "/potolki/static/js/runtime-main.8d072d01.js.map",
+    "static/js/2.541ac43e.chunk.js": "/potolki/static/js/2.541ac43e.chunk.js",
+    "static/js/2.541ac43e.chunk.js.map": "/potolki/static/js/2.541ac43e.chunk.js.map",
+    "static/js/3.28bc132b.chunk.js": "/potolki/static/js/3.28bc132b.chunk.js",
+    "static/js/3.28bc132b.chunk.js.map": "/potolki/static/js/3.28bc132b.chunk.js.map",
+    "index.html": "/potolki/index.html",
+    "static/css/main.28b9272f.chunk.css.map": "/potolki/static/css/main.28b9272f.chunk.css.map",
+    "static/js/2.541ac43e.chunk.js.LICENSE.txt": "/potolki/static/js/2.541ac43e.chunk.js.LICENSE.txt",
+    "static/media/ico-telegram.e8540dc1.png": "/potolki/static/media/ico-telegram.e8540dc1.png",
+    "static/media/instagram.8e408da0.png": "/potolki/static/media/instagram.8e408da0.png",
+    "static/media/logo.770d0ff5.png": "/potolki/static/media/logo.770d0ff5.png",
+    "static/media/phone.cd00a16f.png": "/potolki/static/media/phone.cd00a16f.png",
+    "static/media/sergey2.45334c2f.png": "/potolki/static/media/sergey2.45334c2f.png",
+    "static/media/viber.479e1c69.png": "/potolki/static/media/viber.479e1c69.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8d072d01.js",
+    "static/js/2.541ac43e.chunk.js",
+    "static/css/main.28b9272f.chunk.css",
+    "static/js/main.1225021f.chunk.js"
+  ]
+}
