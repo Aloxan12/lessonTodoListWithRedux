@@ -16,9 +16,9 @@ export const Calculator = () => {
 };
 
 const CalculatorTitle = React.memo(() => {
-    return <div className='calculator-wrap'>
+    return <div className='calculator-title-wrap'>
         <AppTitlePage title='Калькулятор' />
-        <h3>Здесь вы можете рассчитать примерную смоимость</h3>
+        <span className='sub-title'>Здесь вы можете рассчитать примерную стоимость</span>
     </div>
 })
 
