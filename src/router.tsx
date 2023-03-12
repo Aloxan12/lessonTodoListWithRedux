@@ -21,6 +21,11 @@ const routes = [
         id: 'Calculator',
         path: '/calculator',
         component: <Calculator/>
+    },
+    {
+        id: 'Default',
+        path: '*',
+        component: <App/>
     }
 ]
 
