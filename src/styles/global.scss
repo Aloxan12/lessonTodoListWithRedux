@@ -67,7 +67,7 @@ h1{
   width: 100%;
   display: flex;
   column-gap: 20px;
-  .app-input{
+  .app-input, .app-dropdown{
     width: calc(50% - 10px);
   }
 }

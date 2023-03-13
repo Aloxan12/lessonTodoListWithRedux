@@ -33,8 +33,9 @@ interface IRoom {
     pipeCount: number
     trackLightCount: number
     square: number
-    chandelier: boolean
+    bigWidth: boolean
     cornice: boolean
+    corniceLong: number
     corniceType: CorniceType
 }
 
@@ -45,8 +46,9 @@ const RoomForm = React.memo(() => {
         lampCount: 0,
         pipeCount: 0,
         trackLightCount: 0,
-        chandelier: false,
+        bigWidth: false,
         cornice: false,
+        corniceLong: 0,
         corniceType: 'Открытая ниша'
     })
 
@@ -79,9 +81,13 @@ const RoomForm = React.memo(() => {
         ...prevState,
         pipeCount: Number(value)
     })), [])
-    const changeChandelierHandler = useCallback((value: boolean) => setNewRoom(prevState => ({
+    const changeBidWidthHandler = useCallback((value: boolean) => setNewRoom(prevState => ({
         ...prevState,
-        chandelier: value
+        bigWidth: value
+    })), [])
+    const changeCorniceLongHandler = useCallback((value: string) => setNewRoom(prevState => ({
+        ...prevState,
+        corniceLong: Number(value)
     })), [])
     const changeCorniceHandler = useCallback((value: boolean) => setNewRoom(prevState => ({
         ...prevState,
@@ -106,7 +112,7 @@ const RoomForm = React.memo(() => {
             />
             <AppInput
                 value={newRoom.lampCount}
-                label={'Количество светильников(шт.)'}
+                label={'Количество люстр, светильников(шт.)'}
                 onChange={changeLampCountHandler}
                 inputMask={InputMaskType.integer}
             />
@@ -119,7 +125,7 @@ const RoomForm = React.memo(() => {
                 inputMask={InputMaskType.integer}
             />
             <AppInput
-                value={newRoom.lampCount}
+                value={newRoom.pipeCount}
                 label={'Труба под обход батареи(шт.)'}
                 onChange={changePipeCountHandler}
                 inputMask={InputMaskType.integer}
@@ -127,9 +133,9 @@ const RoomForm = React.memo(() => {
         </div>
         <div className={'checkbox-row'}>
             <AppToggle
-                value={newRoom.chandelier}
-                onChange={changeChandelierHandler}
-                text={'Добавить люстру'}
+                value={newRoom.bigWidth}
+                onChange={changeBidWidthHandler}
+                text={'Ширина помещения больше 3.2м ?'}
             />
             <AppToggle
                 value={newRoom.cornice}
@@ -137,15 +143,27 @@ const RoomForm = React.memo(() => {
                 text={'Добавить карниз'}
             />
         </div>
-        {newRoom.cornice && <div className={'dropdown-row'}>
-            <div className='app-dropdown'/>
-            <AppDropdown
-                label={'Выберетие тип карниза'}
-                value={newRoom.corniceType}
-                onChange={changeCorniceTypeHandler}
-                data={['Открытая ниша', 'Ниша с аллюминевым карнизом (закрытая ниша)', 'Потолочный']}
-            />
-        </div>
+        {newRoom.cornice &&
+            <React.Fragment>
+                <div className={'dropdown-row'}>
+                    <div className='app-dropdown'/>
+                    <AppDropdown
+                        label={'Выберетие тип карниза'}
+                        value={newRoom.corniceType}
+                        onChange={changeCorniceTypeHandler}
+                        data={['Открытая ниша', 'Ниша с аллюминевым карнизом (закрытая ниша)', 'Потолочный']}
+                    />
+                </div>
+                <div className={'input-row'}>
+                    <div className={'app-input'} />
+                    <AppInput
+                        value={newRoom.corniceLong}
+                        label={'Длинна корниза(м)'}
+                        onChange={changeCorniceLongHandler}
+                        inputMask={InputMaskType.integer}
+                    />
+                </div>
+            </React.Fragment>
         }
         <RoomPrice />
         <div className='buttons-wrap'>
