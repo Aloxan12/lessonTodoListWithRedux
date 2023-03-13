@@ -3,7 +3,8 @@ import './AppInput.scss'
 import icoArrowDown from '../../utils/icons/arrow-down.png'
 
 export enum InputMaskType {
-    integer = 'integer'
+    integer = 'integer',
+    float = 'float'
 }
 
 interface IAppInputBase {
@@ -14,6 +15,8 @@ interface IAppInputBase {
     value?: string | number | null
     onChange: (value: string) => void
     disabled?: boolean
+    maxValue?: string | number
+    type?: string
 }
 
 interface IAppInputIcoRight extends IAppInputBase {
@@ -45,11 +48,17 @@ export const AppInput = React.memo(({
                                         dropdownInput,
                                         dropdownActive,
                                         disabled,
+                                        maxValue,
+                                        type = 'text'
                                     }: AppInputType) => {
 
         const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
             let result = ''
             switch (inputMask) {
+                case InputMaskType.float:
+                    result = e.target.value
+                        .replace(/[^\d ,]/g, '')
+                    break
                 case InputMaskType.integer: {
                     result = e.currentTarget.value
                         .replace(/[^0-9]/g, '')
@@ -59,19 +68,22 @@ export const AppInput = React.memo(({
                 default:
                     result = e.currentTarget.value
             }
-            onChange(result)
+            onChange(type = 'number' ?  Number(result).toFixed(2) : result)
         }
 
         return (
             <div className='app-input' onClick={onClick}>
                 {label && <label className='input-label'>{label}</label>}
-                {dropdownInput && <img src={icoArrowDown} className={`dropdown-ico-arrow ${dropdownActive ? 'active' : ''}`} alt={'arrow-ico'}/>}
+                {dropdownInput && <img src={icoArrowDown} className={`dropdown-ico-arrow ${dropdownActive ? 'active' : ''}`}
+                                       alt={'arrow-ico'}/>}
                 <input
-                    className={`input-base ${dropdownInput ? 'ico-right': ''}`}
+                    className={`input-base ${dropdownInput ? 'ico-right' : ''}`}
                     placeholder={placeholder}
-                    value={value || value === 0 ? value : ''}
+                    value={value ? value : ''}
                     onChange={onChangeHandler}
                     disabled={!!disabled}
+                    type={type}
+                    step="0.01"
                 />
                 {error && <div className='input-error'>{error}</div>}
             </div>

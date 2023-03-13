@@ -108,7 +108,8 @@ const RoomForm = React.memo(() => {
                 value={newRoom.square}
                 label={`Площадь помещения(м²)`}
                 onChange={changeSquareHandler}
-                inputMask={InputMaskType.integer}
+                maxValue={5}
+                type={'number'}
             />
             <AppInput
                 value={newRoom.lampCount}
