@@ -40,6 +40,6 @@ export const AppRouter = () => {
                     )}
             </Routes>
         </MainLayout>
-        <Footer />
+        <Footer/>
     </BrowserRouter>
 }
