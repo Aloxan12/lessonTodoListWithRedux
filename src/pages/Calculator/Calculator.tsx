@@ -59,7 +59,6 @@ const priceSum = ({ room, dollarRate = 0 }: IPriceSumProps) => {
     pipeCount,
     cornice,
     trackLightCount,
-    title,
   } = room;
   let totalPrice: number = 0;
   if (bigWidth) {
@@ -70,6 +69,7 @@ const priceSum = ({ room, dollarRate = 0 }: IPriceSumProps) => {
 
   totalPrice += +lampCount * (dollarRate * 6); // Точки света
   totalPrice += +pipeCount * (dollarRate * 5); // Трубы
+  totalPrice += +trackLightCount * (dollarRate * 20); // Трубы
 
   if (cornice) {
     switch (corniceType) {
