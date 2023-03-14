@@ -34,26 +34,26 @@ type CorniceType =
 interface IRoom {
   id?: string;
   title: string;
-  lampCount: number;
-  pipeCount: number;
-  trackLightCount: number;
-  square: number;
+  lampCount: string;
+  pipeCount: string;
+  trackLightCount: string;
+  square: string;
   bigWidth: boolean;
   cornice: boolean;
-  corniceLong: number;
+  corniceLong: string;
   corniceType: CorniceType;
 }
 
 const RoomForm = React.memo(() => {
   const [newRoom, setNewRoom] = useState<IRoom>({
     title: "",
-    square: 0,
-    lampCount: 0,
-    pipeCount: 0,
-    trackLightCount: 0,
+    square: "0",
+    lampCount: "0",
+    pipeCount: "0",
+    trackLightCount: "0",
     bigWidth: false,
     cornice: false,
-    corniceLong: 0,
+    corniceLong: "0",
     corniceType: "Открытая ниша",
   });
 
@@ -79,7 +79,7 @@ const RoomForm = React.memo(() => {
     (value: string) =>
       setNewRoom((prevState) => ({
         ...prevState,
-        square: Number(value),
+        square: value,
       })),
     []
   );
@@ -87,7 +87,7 @@ const RoomForm = React.memo(() => {
     (value: string) =>
       setNewRoom((prevState) => ({
         ...prevState,
-        lampCount: Number(value),
+        lampCount: value,
       })),
     []
   );
@@ -95,7 +95,7 @@ const RoomForm = React.memo(() => {
     (value: string) =>
       setNewRoom((prevState) => ({
         ...prevState,
-        trackLightCount: Number(value),
+        trackLightCount: value,
       })),
     []
   );
@@ -103,7 +103,7 @@ const RoomForm = React.memo(() => {
     (value: string) =>
       setNewRoom((prevState) => ({
         ...prevState,
-        pipeCount: Number(value),
+        pipeCount: value,
       })),
     []
   );
@@ -116,10 +116,10 @@ const RoomForm = React.memo(() => {
     []
   );
   const changeCorniceLongHandler = useCallback(
-    (value: string) =>
+    (corniceLong: string) =>
       setNewRoom((prevState) => ({
         ...prevState,
-        corniceLong: Number(value),
+        corniceLong,
       })),
     []
   );
@@ -149,7 +149,7 @@ const RoomForm = React.memo(() => {
       />
       <div className={"input-row"}>
         <AppInput
-          value={newRoom.square}
+          value={`${newRoom.square}`}
           label={`Площадь помещения(м²)`}
           placeholder={"0"}
           onChange={changeSquareHandler}
@@ -212,7 +212,7 @@ const RoomForm = React.memo(() => {
               value={newRoom.corniceLong}
               label={"Длинна корниза(м)"}
               onChange={changeCorniceLongHandler}
-              type={"number"}
+              inputMask={InputMaskType.float}
               maxValue={10}
             />
           </div>
