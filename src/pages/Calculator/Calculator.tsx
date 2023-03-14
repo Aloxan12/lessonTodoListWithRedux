@@ -77,6 +77,10 @@ const RoomForm = React.memo(() => {
         ...prevState,
         lampCount: Number(value)
     })), [])
+    const changeTrackLampHandler = useCallback((value: string) => setNewRoom(prevState => ({
+        ...prevState,
+        trackLightCount: Number(value)
+    })), [])
     const changePipeCountHandler = useCallback((value: string) => setNewRoom(prevState => ({
         ...prevState,
         pipeCount: Number(value)
@@ -120,9 +124,9 @@ const RoomForm = React.memo(() => {
         </div>
         <div className={'input-row'}>
             <AppInput
-                value={newRoom.square}
+                value={newRoom.trackLightCount}
                 label={`Трековый светильник(м.п.)`}
-                onChange={changeSquareHandler}
+                onChange={changeTrackLampHandler}
                 inputMask={InputMaskType.integer}
             />
             <AppInput

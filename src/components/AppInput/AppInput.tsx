@@ -4,7 +4,6 @@ import icoArrowDown from '../../utils/icons/arrow-down.png'
 
 export enum InputMaskType {
     integer = 'integer',
-    float = 'float'
 }
 
 interface IAppInputBase {
@@ -15,7 +14,7 @@ interface IAppInputBase {
     value?: string | number | null
     onChange: (value: string) => void
     disabled?: boolean
-    maxValue?: string | number
+    maxValue?: number
     type?: string
 }
 
@@ -55,10 +54,6 @@ export const AppInput = React.memo(({
         const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
             let result = ''
             switch (inputMask) {
-                case InputMaskType.float:
-                    result = e.target.value
-                        .replace(/[^\d ,]/g, '')
-                    break
                 case InputMaskType.integer: {
                     result = e.currentTarget.value
                         .replace(/[^0-9]/g, '')
@@ -83,7 +78,7 @@ export const AppInput = React.memo(({
                     onChange={onChangeHandler}
                     disabled={!!disabled}
                     type={type}
-                    step="0.01"
+                    maxLength={maxValue}
                 />
                 {error && <div className='input-error'>{error}</div>}
             </div>
