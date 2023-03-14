@@ -8,12 +8,12 @@ interface IAppToggle {
     text?:string
 }
 
-export const AppToggle = ({
-                              value,
-                              onChange,
-                              disabled,
-                              text
-                          }: IAppToggle) => {
+export const AppToggle = React.memo(({
+                                         value,
+                                         onChange,
+                                         disabled,
+                                         text
+                                     }: IAppToggle) => {
     const onChangeHandler = !!onChange
         ? (e: ChangeEvent<HTMLInputElement>) => {
             onChange(e.target.checked)
@@ -36,4 +36,4 @@ export const AppToggle = ({
             {!!text && <span> {text}</span>}
         </div>
     )
-}
+})

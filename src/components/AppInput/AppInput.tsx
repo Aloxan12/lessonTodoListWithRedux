@@ -85,6 +85,8 @@ export const AppInput = React.memo(({
                     onBlur={onBlurHandler}
                     disabled={!!disabled}
                     type={type}
+                    max={`${maxValue}`}
+                    min={`${1}`}
                     maxLength={maxValue}
                 />
                 {error && <div className='input-error'>{error}</div>}

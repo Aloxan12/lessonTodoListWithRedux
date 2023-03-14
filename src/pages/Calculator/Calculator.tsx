@@ -111,13 +111,15 @@ const RoomForm = React.memo(() => {
             <AppInput
                 value={newRoom.square}
                 label={`Площадь помещения(м²)`}
+                placeholder={'0'}
                 onChange={changeSquareHandler}
-                maxValue={5}
+                maxValue={1000}
                 type={'number'}
             />
             <AppInput
                 value={newRoom.lampCount}
                 label={'Количество люстр, светильников(шт.)'}
+                placeholder={'0'}
                 onChange={changeLampCountHandler}
                 inputMask={InputMaskType.integer}
             />
@@ -126,12 +128,14 @@ const RoomForm = React.memo(() => {
             <AppInput
                 value={newRoom.trackLightCount}
                 label={`Трековый светильник(м.п.)`}
+                placeholder={'0'}
                 onChange={changeTrackLampHandler}
                 inputMask={InputMaskType.integer}
             />
             <AppInput
                 value={newRoom.pipeCount}
                 label={'Труба под обход батареи(шт.)'}
+                placeholder={'0'}
                 onChange={changePipeCountHandler}
                 inputMask={InputMaskType.integer}
             />
