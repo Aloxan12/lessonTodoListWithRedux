@@ -44,6 +44,52 @@ interface IRoom {
   corniceType: CorniceType;
 }
 
+interface IPriceSumProps {
+  room: IRoom;
+  dollarRate?: number;
+}
+
+const priceSum = ({ room, dollarRate = 0 }: IPriceSumProps) => {
+  const {
+    bigWidth,
+    square,
+    corniceLong,
+    corniceType,
+    lampCount,
+    pipeCount,
+    cornice,
+    trackLightCount,
+    title,
+  } = room;
+  let totalPrice: number = 0;
+  if (bigWidth) {
+    totalPrice += +square * (dollarRate * 10);
+  } else {
+    totalPrice += +square * (dollarRate * 8);
+  }
+
+  totalPrice += +lampCount * (dollarRate * 6); // Точки света
+  totalPrice += +pipeCount * (dollarRate * 5); // Трубы
+
+  if (cornice) {
+    switch (corniceType) {
+      case "Открытая ниша":
+        totalPrice += +corniceLong * (dollarRate * 10);
+        break;
+      case "Ниша с аллюминевым карнизом (закрытая ниша)":
+        totalPrice += +corniceLong * (dollarRate * 20);
+        break;
+      case "Потолочный":
+        totalPrice += +corniceLong * (dollarRate * 8);
+        break;
+      default:
+        return totalPrice;
+    }
+  }
+
+  return totalPrice;
+};
+
 const RoomForm = React.memo(() => {
   const [newRoom, setNewRoom] = useState<IRoom>({
     title: "",
@@ -218,7 +264,7 @@ const RoomForm = React.memo(() => {
           </div>
         </React.Fragment>
       )}
-      <RoomPrice />
+      <RoomPrice price={priceSum({ room: newRoom, dollarRate: rate || 0 })} />
       <div className="buttons-wrap">
         <AppButton title="Добавить в корзину" onClick={() => {}} />
       </div>
@@ -226,15 +272,19 @@ const RoomForm = React.memo(() => {
   );
 });
 
-const RoomPrice = () => {
+interface RoomPriceProps {
+  price: number;
+}
+
+const RoomPrice = React.memo(({ price }: RoomPriceProps) => {
   return (
     <div className="room-price-wrap">
       <span>
         <b>Итого:</b>
       </span>
       <span>
-        <b>0 руб.</b>
+        <b>{price.toFixed(2)} руб.</b>
       </span>
     </div>
   );
-};
+});
