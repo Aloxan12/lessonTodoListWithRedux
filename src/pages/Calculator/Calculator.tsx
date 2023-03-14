@@ -165,7 +165,7 @@ const RoomForm = React.memo(() => {
                         value={newRoom.corniceLong}
                         label={'Длинна корниза(м)'}
                         onChange={changeCorniceLongHandler}
-                        inputMask={InputMaskType.integer}
+                        type={'number'}
                     />
                 </div>
             </React.Fragment>
