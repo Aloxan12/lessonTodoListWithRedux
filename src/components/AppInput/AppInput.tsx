@@ -4,6 +4,7 @@ import icoArrowDown from '../../utils/icons/arrow-down.png'
 
 export enum InputMaskType {
     integer = 'integer',
+    float = 'float',
 }
 
 interface IAppInputBase {
@@ -36,7 +37,7 @@ interface IAppInputDropdown extends IAppInputBase {
 
 type AppInputType = IAppInputDropdown | IAppInputIcoRight;
 
-export const AppInput = React.memo(({
+export const AppInput =({
                                         label,
                                         error,
                                         placeholder,
@@ -51,26 +52,36 @@ export const AppInput = React.memo(({
                                         type = 'text'
                                     }: AppInputType) => {
 
-        const onChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
             let result = ''
             switch (inputMask) {
-                case InputMaskType.integer: {
-                    result = e.currentTarget.value
-                        .replace(/[^0-9]/g, '')
+                case InputMaskType.float:
+                    const floatVal = e.target.value
+                        .replace(/[,]+/g, '.')
+                        .replace(/^\.+/g, '')
+                        // .replace(/^0+/g, '')
                         .replace(/^(0)([0-9])+/g, '$2')
+                        .match(/(^[0-9]*(\.)?[0-9]{0,2})*/g)
+                    // onChange(!!newVal ? (newVal[0] === '' ? '0' : newVal[0]) : '')
+                    result = !!floatVal ? floatVal[0] : ''
                     break
-                }
+                case InputMaskType.integer:
+                    const integerVal = e.target.value
+                        .replace(/\D/g, '')
+                        .replace(/^(0)([0-9])+/g, '$2')
+                    result = integerVal
+                    break
                 default:
-                    result = e.currentTarget.value
+                    result = e.target.value
             }
-            onChange(type === 'number' ?  Number(result).toFixed(2) : result)
-        },[inputMask, type])
+            onChange(result)
+        }
 
-        const onBlurHandler = useCallback(()=>{
-            if(!!maxValue && (type === 'number' || inputMask === InputMaskType.integer) && maxValue < Number(value)){
+        const onBlurHandler = useCallback(() => {
+            if (!!maxValue && (type === 'number' || inputMask === InputMaskType.integer) && maxValue < Number(value)) {
                 onChange(maxValue.toString())
             }
-        },[maxValue, value, inputMask, type])
+        }, [maxValue, value, inputMask, type])
 
         return (
             <div className='app-input' onClick={onClick}>
@@ -80,15 +91,13 @@ export const AppInput = React.memo(({
                 <input
                     className={`input-base ${dropdownInput ? 'ico-right' : ''}`}
                     placeholder={placeholder}
-                    value={value ? value : ''}
+                    value={value ? `${value}` : ''}
                     onChange={onChangeHandler}
                     onBlur={onBlurHandler}
                     disabled={!!disabled}
                     type={type}
-                    maxLength={maxValue}
                 />
                 {error && <div className='input-error'>{error}</div>}
             </div>
         );
     }
-)

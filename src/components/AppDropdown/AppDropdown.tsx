@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './AppDropdown.scss';
-import { AppInput } from '../AppInput/AppInput';
+import React, { useEffect, useRef, useState } from "react";
+import "./AppDropdown.scss";
+import { AppInput } from "../AppInput/AppInput";
 
 interface IAppDropdownBase<T, TKey extends keyof T> {
   disabled?: boolean;
@@ -51,13 +51,13 @@ export const AppDropdown = <T, TKey extends keyof T>({
 
   useEffect(() => {
     if (active) {
-      document.addEventListener('click', outSideClickHandler, false);
-      document.addEventListener('touchend', outSideClickHandler, false);
+      document.addEventListener("click", outSideClickHandler, false);
+      document.addEventListener("touchend", outSideClickHandler, false);
     }
     return () => {
       if (active) {
-        document.removeEventListener('click', outSideClickHandler, false);
-        document.removeEventListener('touchend', outSideClickHandler, false);
+        document.removeEventListener("click", outSideClickHandler, false);
+        document.removeEventListener("touchend", outSideClickHandler, false);
       }
     };
   }, [active]);
@@ -80,9 +80,9 @@ export const AppDropdown = <T, TKey extends keyof T>({
 
   return (
     <div
-      className={`app-dropdown ${active ? `active` : ''} ${
-        paginationMode ? `pagination-mode` : ''
-      } ${disabled ? 'disable' : ''}`}
+      className={`app-dropdown ${active ? `active` : ""} ${
+        paginationMode ? `pagination-mode` : ""
+      } ${disabled ? "disable" : ""}`}
       ref={refDropDown}
     >
       <AppInput
@@ -102,7 +102,7 @@ export const AppDropdown = <T, TKey extends keyof T>({
         label={label}
       />
       {active && !!currentData && (
-        <div className={'dropdown-values-block'}>
+        <div className={"dropdown-values-block"}>
           {!!resetValueHandler && (
             <div
               className={`value-item reset-filter`}
@@ -119,7 +119,7 @@ export const AppDropdown = <T, TKey extends keyof T>({
                 className={`value-item`}
                 key={`dropdown-active${index}`}
               >
-                {itemValue}
+                {itemValue as String}
               </div>
             );
           })}
