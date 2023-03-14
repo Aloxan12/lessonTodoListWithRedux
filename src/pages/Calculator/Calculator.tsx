@@ -166,6 +166,7 @@ const RoomForm = React.memo(() => {
                         label={'Длинна корниза(м)'}
                         onChange={changeCorniceLongHandler}
                         type={'number'}
+                        maxValue={10}
                     />
                 </div>
             </React.Fragment>

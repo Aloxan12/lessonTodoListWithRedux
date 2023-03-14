@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useCallback} from 'react';
 import './AppInput.scss'
 import icoArrowDown from '../../utils/icons/arrow-down.png'
 
@@ -66,6 +66,12 @@ export const AppInput = React.memo(({
             onChange(type = 'number' ?  Number(result).toFixed(2) : result)
         }
 
+        const onBlurHandler = useCallback(()=>{
+            if(!!maxValue && (type === 'number' || inputMask === InputMaskType.integer) && maxValue < Number(value)){
+                onChange(maxValue.toString())
+            }
+        },[maxValue, value, inputMask, type])
+
         return (
             <div className='app-input' onClick={onClick}>
                 {label && <label className='input-label'>{label}</label>}
@@ -76,6 +82,7 @@ export const AppInput = React.memo(({
                     placeholder={placeholder}
                     value={value ? value : ''}
                     onChange={onChangeHandler}
+                    onBlur={onBlurHandler}
                     disabled={!!disabled}
                     type={type}
                     maxLength={maxValue}
