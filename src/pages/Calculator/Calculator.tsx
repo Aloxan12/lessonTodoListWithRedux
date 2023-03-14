@@ -106,7 +106,8 @@ const RoomForm = React.memo(() => {
         <AppInput
             value={newRoom.title}
             label={'Название помещения'}
-            onChange={changeTitleHandler}/>
+            onChange={changeTitleHandler}
+        />
         <div className={'input-row'}>
             <AppInput
                 value={newRoom.square}

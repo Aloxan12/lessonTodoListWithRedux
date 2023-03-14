@@ -51,7 +51,7 @@ export const AppInput = React.memo(({
                                         type = 'text'
                                     }: AppInputType) => {
 
-        const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const onChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
             let result = ''
             switch (inputMask) {
                 case InputMaskType.integer: {
@@ -63,8 +63,8 @@ export const AppInput = React.memo(({
                 default:
                     result = e.currentTarget.value
             }
-            onChange(type = 'number' ?  Number(result).toFixed(2) : result)
-        }
+            onChange(type === 'number' ?  Number(result).toFixed(2) : result)
+        },[inputMask, type])
 
         const onBlurHandler = useCallback(()=>{
             if(!!maxValue && (type === 'number' || inputMask === InputMaskType.integer) && maxValue < Number(value)){
@@ -85,8 +85,6 @@ export const AppInput = React.memo(({
                     onBlur={onBlurHandler}
                     disabled={!!disabled}
                     type={type}
-                    max={`${maxValue}`}
-                    min={`${1}`}
                     maxLength={maxValue}
                 />
                 {error && <div className='input-error'>{error}</div>}
