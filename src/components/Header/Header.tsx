@@ -23,8 +23,11 @@ const navbarRoute = [
 
 export const Header = React.memo(() => {
   const [isShowMenu, setIsShowMenu] = useState(false);
-  const onChangeShowHandler = useCallback(() => {
+  const openCloseChangeShowHandler = useCallback(() => {
     setIsShowMenu((prevState) => !prevState);
+  }, []);
+  const closeChangeShowHandler = useCallback(() => {
+    setIsShowMenu(false);
   }, []);
   return (
     <header className="header-main">
@@ -33,7 +36,7 @@ export const Header = React.memo(() => {
           <img src={logo} alt="logo" className="logo" />
         </div>
         <div className="nav-wrap">
-          <div className="burger-menu" onClick={onChangeShowHandler}>
+          <div className="burger-menu" onClick={openCloseChangeShowHandler}>
             <div />
           </div>
           <nav className={`nav ${isShowMenu ? "active-nav" : ""}`}>
@@ -42,7 +45,7 @@ export const Header = React.memo(() => {
                 <NavLink
                   to={item.path}
                   key={item.title}
-                  onClick={onChangeShowHandler}
+                  onClick={closeChangeShowHandler}
                   className={({ isActive }) => (isActive ? "active-link" : "")}
                 >
                   {item.title}
