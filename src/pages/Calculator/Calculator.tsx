@@ -89,18 +89,20 @@ const priceSum = ({ room }: IPriceSumProps) => {
   return totalPrice;
 };
 
+const emptyRoom: IRoom = {
+  title: "",
+  square: "0",
+  lampCount: "0",
+  pipeCount: "0",
+  trackLightCount: "0",
+  bigWidth: false,
+  cornice: false,
+  corniceLong: "0",
+  corniceType: "Открытая ниша",
+};
+
 const RoomForm = React.memo(() => {
-  const [newRoom, setNewRoom] = useState<IRoom>({
-    title: "",
-    square: "0",
-    lampCount: "0",
-    pipeCount: "0",
-    trackLightCount: "0",
-    bigWidth: false,
-    cornice: false,
-    corniceLong: "0",
-    corniceType: "Открытая ниша",
-  });
+  const [newRoom, setNewRoom] = useState<IRoom>(emptyRoom);
 
   const [rate, setRate] = useState<null | number>(null);
 
