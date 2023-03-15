@@ -46,10 +46,9 @@ interface IRoom {
 
 interface IPriceSumProps {
   room: IRoom;
-  dollarRate?: number;
 }
 
-const priceSum = ({ room, dollarRate = 0 }: IPriceSumProps) => {
+const priceSum = ({ room }: IPriceSumProps) => {
   const {
     bigWidth,
     square,
@@ -62,25 +61,25 @@ const priceSum = ({ room, dollarRate = 0 }: IPriceSumProps) => {
   } = room;
   let totalPrice: number = 0;
   if (bigWidth) {
-    totalPrice += +square * (dollarRate * 10);
+    totalPrice += +square * 10;
   } else {
-    totalPrice += +square * (dollarRate * 8);
+    totalPrice += +square * 8;
   }
 
-  totalPrice += +lampCount * (dollarRate * 6); // Точки света
-  totalPrice += +pipeCount * (dollarRate * 5); // Трубы
-  totalPrice += +trackLightCount * (dollarRate * 20); // Трубы
+  totalPrice += +lampCount * 6; // Точки света
+  totalPrice += +pipeCount * 5; // Трубы
+  totalPrice += +trackLightCount * 20; // Трубы
 
   if (cornice) {
     switch (corniceType) {
       case "Открытая ниша":
-        totalPrice += +corniceLong * (dollarRate * 10);
+        totalPrice += +corniceLong * 10;
         break;
       case "Ниша с аллюминевым карнизом (закрытая ниша)":
-        totalPrice += +corniceLong * (dollarRate * 20);
+        totalPrice += +corniceLong * 20;
         break;
       case "Потолочный":
-        totalPrice += +corniceLong * (dollarRate * 8);
+        totalPrice += +corniceLong * 8;
         break;
       default:
         return totalPrice;
@@ -264,7 +263,7 @@ const RoomForm = React.memo(() => {
           </div>
         </React.Fragment>
       )}
-      <RoomPrice price={priceSum({ room: newRoom, dollarRate: rate || 0 })} />
+      <RoomPrice price={priceSum({ room: newRoom })} dollarRate={rate} />
       <div className="buttons-wrap">
         <AppButton title="Добавить в корзину" onClick={() => {}} />
       </div>
@@ -274,16 +273,21 @@ const RoomForm = React.memo(() => {
 
 interface RoomPriceProps {
   price: number;
+  dollarRate?: number | null;
 }
 
-const RoomPrice = React.memo(({ price }: RoomPriceProps) => {
+const RoomPrice = React.memo(({ price, dollarRate }: RoomPriceProps) => {
   return (
     <div className="room-price-wrap">
       <span>
         <b>Итого:</b>
       </span>
       <span>
-        <b>{price.toFixed(2)} руб.</b>
+        <b>
+          {!!dollarRate
+            ? `${(dollarRate * price).toFixed(2)} руб.`
+            : `${price} $`}
+        </b>
       </span>
     </div>
   );
