@@ -55,75 +55,77 @@ const floatMask = (value: string) => {
   return formattedValue;
 };
 
-export const AppInput = ({
-  label,
-  error,
-  placeholder,
-  value,
-  inputMask,
-  onChange,
-  onClick,
-  dropdownInput,
-  dropdownActive,
-  disabled,
-  maxValue,
-  type = "text",
-}: AppInputType) => {
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    let result = "";
-    switch (inputMask) {
-      case InputMaskType.float:
-        const floatVal = e.target.value
-          .replace(/[,]+/g, ".")
-          .replace(/^\.+/g, "")
-          // .replace(/^0+/g, '')
-          .replace(/^(0)([0-9])+/g, "$2")
-          .match(/(^[0-9]*(\.)?[0-9]{0,2})*/g);
-        // onChange(!!newVal ? (newVal[0] === '' ? '0' : newVal[0]) : '')
-        result = !!floatVal ? floatVal[0] : "";
-        break;
-      case InputMaskType.integer:
-        const integerVal = e.target.value
-          .replace(/\D/g, "")
-          .replace(/^(0)([0-9])+/g, "$2");
-        result = integerVal;
-        break;
-      default:
-        result = e.target.value;
-    }
-    onChange(result);
-  };
+export const AppInput = React.memo(
+  ({
+    label,
+    error,
+    placeholder,
+    value,
+    inputMask,
+    onChange,
+    onClick,
+    dropdownInput,
+    dropdownActive,
+    disabled,
+    maxValue,
+    type = "text",
+  }: AppInputType) => {
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+      let result = "";
+      switch (inputMask) {
+        case InputMaskType.float:
+          const floatVal = e.target.value
+            .replace(/[,]+/g, ".")
+            .replace(/^\.+/g, "")
+            // .replace(/^0+/g, '')
+            .replace(/^(0)([0-9])+/g, "$2")
+            .match(/(^[0-9]*(\.)?[0-9]{0,2})*/g);
+          // onChange(!!newVal ? (newVal[0] === '' ? '0' : newVal[0]) : '')
+          result = !!floatVal ? floatVal[0] : "";
+          break;
+        case InputMaskType.integer:
+          const integerVal = e.target.value
+            .replace(/\D/g, "")
+            .replace(/^(0)([0-9])+/g, "$2");
+          result = integerVal;
+          break;
+        default:
+          result = e.target.value;
+      }
+      onChange(result);
+    };
 
-  const onBlurHandler = useCallback(() => {
-    if (
-      !!maxValue &&
-      (type === "number" || inputMask === InputMaskType.integer) &&
-      maxValue < Number(value)
-    ) {
-      onChange(maxValue.toString());
-    }
-  }, [maxValue, value, inputMask, type]);
+    const onBlurHandler = useCallback(() => {
+      if (
+        !!maxValue &&
+        (type === "number" || inputMask === InputMaskType.integer) &&
+        maxValue < Number(value)
+      ) {
+        onChange(maxValue.toString());
+      }
+    }, [maxValue, value, inputMask, type]);
 
-  return (
-    <div className="app-input" onClick={onClick}>
-      {label && <label className="input-label">{label}</label>}
-      {dropdownInput && (
-        <img
-          src={icoArrowDown}
-          className={`dropdown-ico-arrow ${dropdownActive ? "active" : ""}`}
-          alt={"arrow-ico"}
+    return (
+      <div className="app-input" onClick={onClick}>
+        {label && <label className="input-label">{label}</label>}
+        {dropdownInput && (
+          <img
+            src={icoArrowDown}
+            className={`dropdown-ico-arrow ${dropdownActive ? "active" : ""}`}
+            alt={"arrow-ico"}
+          />
+        )}
+        <input
+          className={`input-base ${dropdownInput ? "ico-right" : ""}`}
+          placeholder={placeholder}
+          value={value ? `${value}` : ""}
+          onChange={onChangeHandler}
+          onBlur={onBlurHandler}
+          disabled={!!disabled}
+          type={type}
         />
-      )}
-      <input
-        className={`input-base ${dropdownInput ? "ico-right" : ""}`}
-        placeholder={placeholder}
-        value={value ? `${value}` : ""}
-        onChange={onChangeHandler}
-        onBlur={onBlurHandler}
-        disabled={!!disabled}
-        type={type}
-      />
-      {error && <div className="input-error">{error}</div>}
-    </div>
-  );
-};
+        {error && <div className="input-error">{error}</div>}
+      </div>
+    );
+  }
+);

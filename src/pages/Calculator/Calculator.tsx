@@ -204,8 +204,13 @@ const RoomForm = React.memo(() => {
       setErrorSquare("Обязательное поле");
       return;
     }
-    console.log("создаем");
-  }, [newRoom, price]);
+    const rooms = !!localStorage.getItem("rooms")
+      ? JSON.parse(localStorage.getItem("rooms") as string)
+      : [];
+    const newRoomsArr = [newRoom, ...rooms];
+    localStorage.setItem("rooms", JSON.stringify(newRoomsArr));
+    setNewRoom(emptyRoom);
+  }, [newRoom, price, localStorage]);
 
   return (
     <div className="calculator-form">

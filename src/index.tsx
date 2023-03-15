@@ -1,8 +1,16 @@
-import React from 'react';
-import ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
-import {AppRouter} from "./router";
+import { AppRouter } from "./router";
 
-ReactDOM.render(<React.StrictMode><AppRouter/></React.StrictMode>, document.getElementById('root'));
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 
-reportWebVitals()
+root.render(
+  <React.StrictMode>
+    <AppRouter />
+  </React.StrictMode>
+);
+
+reportWebVitals();
