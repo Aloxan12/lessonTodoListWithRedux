@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import "./Calculator.scss";
 import { AppInput, InputMaskType } from "../../components/AppInput/AppInput";
 import { AppToggle } from "../../components/AppToggle/AppToggle";
@@ -104,7 +104,11 @@ const emptyRoom: IRoom = {
 const RoomForm = React.memo(() => {
   const [newRoom, setNewRoom] = useState<IRoom>(emptyRoom);
 
+  const [errorTitle, setErrorTitle] = useState("");
+  const [errorSquare, setErrorSquare] = useState("");
+
   const [rate, setRate] = useState<null | number>(null);
+  const price = useMemo(() => priceSum({ room: newRoom }), [newRoom]);
 
   useEffect(() => {
     fetch("https://www.nbrb.by/api/exrates/rates/431", { method: "Get" })
@@ -114,22 +118,20 @@ const RoomForm = React.memo(() => {
       });
   }, []);
 
-  const changeTitleHandler = useCallback(
-    (value: string) =>
-      setNewRoom((prevState) => ({
-        ...prevState,
-        title: value,
-      })),
-    []
-  );
-  const changeSquareHandler = useCallback(
-    (value: string) =>
-      setNewRoom((prevState) => ({
-        ...prevState,
-        square: value,
-      })),
-    []
-  );
+  const changeTitleHandler = useCallback((value: string) => {
+    setNewRoom((prevState) => ({
+      ...prevState,
+      title: value,
+    }));
+    !!errorTitle && setErrorTitle("");
+  }, []);
+  const changeSquareHandler = useCallback((value: string) => {
+    setNewRoom((prevState) => ({
+      ...prevState,
+      square: value,
+    }));
+    !!errorSquare && setErrorSquare("");
+  }, []);
   const changeLampCountHandler = useCallback(
     (value: string) =>
       setNewRoom((prevState) => ({
@@ -187,12 +189,25 @@ const RoomForm = React.memo(() => {
     []
   );
 
+  const addInBasketHandler = useCallback(() => {
+    if (!newRoom.title) {
+      setErrorTitle("Обязательное поле");
+      return;
+    }
+    if (!newRoom.square || newRoom.square === "0") {
+      setErrorSquare("Обязательное поле");
+      return;
+    }
+    console.log("nen");
+  }, [newRoom, price]);
+
   return (
     <div className="calculator-form">
       <AppInput
         value={newRoom.title}
         label={"Название помещения"}
         onChange={changeTitleHandler}
+        error={!!errorTitle ? errorTitle : undefined}
       />
       <div className={"input-row"}>
         <AppInput
@@ -201,6 +216,7 @@ const RoomForm = React.memo(() => {
           placeholder={"0"}
           onChange={changeSquareHandler}
           inputMask={InputMaskType.float}
+          error={!!errorSquare ? errorSquare : undefined}
         />
         <AppInput
           value={newRoom.lampCount}
@@ -265,9 +281,9 @@ const RoomForm = React.memo(() => {
           </div>
         </React.Fragment>
       )}
-      <RoomPrice price={priceSum({ room: newRoom })} dollarRate={rate} />
+      <RoomPrice price={price} dollarRate={rate} />
       <div className="buttons-wrap">
-        <AppButton title="Добавить в корзину" onClick={() => {}} />
+        <AppButton title="Добавить в корзину" onClick={addInBasketHandler} />
       </div>
     </div>
   );
