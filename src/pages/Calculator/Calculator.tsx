@@ -5,6 +5,7 @@ import { AppToggle } from "../../components/AppToggle/AppToggle";
 import { AppDropdown } from "../../components/AppDropdown/AppDropdown";
 import { AppButton } from "../../components/AppButton/AppButton";
 import { AppTitlePage } from "../../components/AppTitlePage/AppTitlePage";
+import { getRoomsArr } from "../../helpers/getRoomsCount";
 
 export const Calculator = () => {
   return (
@@ -204,9 +205,7 @@ const RoomForm = React.memo(() => {
       setErrorSquare("Обязательное поле");
       return;
     }
-    const rooms = !!localStorage.getItem("rooms")
-      ? JSON.parse(localStorage.getItem("rooms") as string)
-      : [];
+    const rooms = getRoomsArr();
     const newRoomsArr = [newRoom, ...rooms];
     localStorage.setItem("rooms", JSON.stringify(newRoomsArr));
     setNewRoom(emptyRoom);
