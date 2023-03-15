@@ -118,20 +118,26 @@ const RoomForm = React.memo(() => {
       });
   }, []);
 
-  const changeTitleHandler = useCallback((value: string) => {
-    setNewRoom((prevState) => ({
-      ...prevState,
-      title: value,
-    }));
-    !!errorTitle && setErrorTitle("");
-  }, []);
-  const changeSquareHandler = useCallback((value: string) => {
-    setNewRoom((prevState) => ({
-      ...prevState,
-      square: value,
-    }));
-    !!errorSquare && setErrorSquare("");
-  }, []);
+  const changeTitleHandler = useCallback(
+    (value: string) => {
+      setNewRoom((prevState) => ({
+        ...prevState,
+        title: value,
+      }));
+      !!errorTitle && setErrorTitle("");
+    },
+    [errorTitle]
+  );
+  const changeSquareHandler = useCallback(
+    (value: string) => {
+      setNewRoom((prevState) => ({
+        ...prevState,
+        square: value,
+      }));
+      !!errorSquare && setErrorSquare("");
+    },
+    [errorSquare]
+  );
   const changeLampCountHandler = useCallback(
     (value: string) =>
       setNewRoom((prevState) => ({
@@ -198,7 +204,7 @@ const RoomForm = React.memo(() => {
       setErrorSquare("Обязательное поле");
       return;
     }
-    console.log("nen");
+    console.log("создаем");
   }, [newRoom, price]);
 
   return (
