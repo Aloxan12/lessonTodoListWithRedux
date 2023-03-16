@@ -143,11 +143,11 @@ export const RoomForm = React.memo(() => {
       return;
     }
     const rooms = getRoomsArr();
-    const newRoomsArr = [newRoom, ...rooms];
-    localStorage.setItem(
-      "rooms",
-      JSON.stringify({ ...newRoomsArr, price, id: new Date().valueOf() })
-    );
+    const newRoomsArr = [
+      { ...newRoom, price, id: new Date().valueOf() },
+      ...rooms,
+    ];
+    localStorage.setItem("rooms", JSON.stringify(newRoomsArr));
     setNewRoom(emptyRoom);
   }, [newRoom, price, localStorage]);
 

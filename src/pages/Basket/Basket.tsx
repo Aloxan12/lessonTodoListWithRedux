@@ -13,7 +13,9 @@ export const Basket = () => {
       <div className="basket-rooms-wrap">
         {!!rooms.length ? (
           rooms.map((item: IRoom, index: number) => (
-            <div key={`${item.id} ${index}`}>{item.title}</div>
+            <div key={`${item.id} ${index}`}>
+              {item.title} {item.price}$
+            </div>
           ))
         ) : (
           <div className="empty-block">

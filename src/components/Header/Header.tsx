@@ -14,9 +14,7 @@ const navbarRoute = [
     path: "/calculator",
   },
   {
-    title: `Корзина ${
-      !!getRoomsArr().length ? `(${getRoomsArr().length})` : ""
-    }`,
+    title: `Корзина`,
     path: "/basket",
   },
 ];
@@ -48,7 +46,13 @@ export const Header = React.memo(() => {
                   onClick={closeChangeShowHandler}
                   className={({ isActive }) => (isActive ? "active-link" : "")}
                 >
-                  {item.title}
+                  {item.title === "Корзина"
+                    ? `Корзина ${
+                        !!getRoomsArr().length
+                          ? `(${getRoomsArr().length})`
+                          : ""
+                      }`
+                    : item.title}
                 </NavLink>
               );
             })}
