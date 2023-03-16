@@ -23,6 +23,7 @@ export interface IRoom {
   cornice: boolean;
   corniceLong: string;
   corniceType: CorniceType;
+  price: number;
 }
 
 const emptyRoom: IRoom = {
@@ -35,6 +36,7 @@ const emptyRoom: IRoom = {
   cornice: false,
   corniceLong: "0",
   corniceType: "Открытая ниша",
+  price: 0,
 };
 
 export const RoomForm = React.memo(() => {
@@ -142,7 +144,10 @@ export const RoomForm = React.memo(() => {
     }
     const rooms = getRoomsArr();
     const newRoomsArr = [newRoom, ...rooms];
-    localStorage.setItem("rooms", JSON.stringify(newRoomsArr));
+    localStorage.setItem(
+      "rooms",
+      JSON.stringify({ ...newRoomsArr, price, id: new Date().valueOf() })
+    );
     setNewRoom(emptyRoom);
   }, [newRoom, price, localStorage]);
 
