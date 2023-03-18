@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../utils/images/logo.png";
@@ -27,6 +27,14 @@ export const Header = React.memo(() => {
   const closeChangeShowHandler = useCallback(() => {
     setIsShowMenu(false);
   }, []);
+  const [basketCount, setBasketCount] = useState(0);
+  const roomsCount = getRoomsArr().length;
+
+  useEffect(() => {
+    if (!!roomsCount) {
+      setBasketCount(roomsCount);
+    }
+  }, [localStorage, roomsCount]);
   return (
     <header className="header-main">
       <div className="container header-wrap">
@@ -47,11 +55,7 @@ export const Header = React.memo(() => {
                   className={({ isActive }) => (isActive ? "active-link" : "")}
                 >
                   {item.title === "Корзина"
-                    ? `Корзина ${
-                        !!getRoomsArr().length
-                          ? `(${getRoomsArr().length})`
-                          : ""
-                      }`
+                    ? `Корзина (${basketCount})`
                     : item.title}
                 </NavLink>
               );
