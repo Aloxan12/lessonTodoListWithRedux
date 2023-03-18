@@ -34,7 +34,7 @@ export const Header = React.memo(() => {
     if (!!roomsCount) {
       setBasketCount(roomsCount);
     }
-  }, [localStorage, roomsCount]);
+  }, [roomsCount]);
   return (
     <header className="header-main">
       <div className="container header-wrap">
