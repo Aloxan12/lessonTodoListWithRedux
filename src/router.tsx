@@ -6,6 +6,7 @@ import { Header } from "./components/Header/Header";
 import { MainLayout } from "./components/MainLayout/MainLayout";
 import { Footer } from "./components/Footer/Footer";
 import { Basket } from "./pages/Basket/Basket";
+import { useState } from "react";
 
 const routes = [
   {
@@ -36,14 +37,23 @@ const routes = [
 ];
 
 export const AppRouter = () => {
+  const [roomCount, setRoomCount] = useState(0);
   return (
     <BrowserRouter>
-      <Header />
+      <Header roomCount={roomCount} />
       <MainLayout>
         <Routes>
-          {routes.map(({ id, path, component }) => (
-            <Route key={id} path={path} element={component} />
-          ))}
+          {routes.map(({ id, path, component }) =>
+            id === "Calculator" ? (
+              <Route
+                key={id}
+                path={path}
+                element={<Calculator setRoomCount={setRoomCount} />}
+              />
+            ) : (
+              <Route key={id} path={path} element={component} />
+            )
+          )}
         </Routes>
       </MainLayout>
       <Footer />

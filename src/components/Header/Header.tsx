@@ -19,7 +19,11 @@ const navbarRoute = [
   },
 ];
 
-export const Header = React.memo(() => {
+interface IHeaderProps {
+  roomCount: number;
+}
+
+export const Header = React.memo(({ roomCount }: IHeaderProps) => {
   const [isShowMenu, setIsShowMenu] = useState(false);
   const openCloseChangeShowHandler = useCallback(() => {
     setIsShowMenu((prevState) => !prevState);
@@ -27,14 +31,7 @@ export const Header = React.memo(() => {
   const closeChangeShowHandler = useCallback(() => {
     setIsShowMenu(false);
   }, []);
-  const [basketCount, setBasketCount] = useState(0);
-  const roomsCount = getRoomsArr().length;
 
-  useEffect(() => {
-    if (!!roomsCount) {
-      setBasketCount(roomsCount);
-    }
-  }, [roomsCount]);
   return (
     <header className="header-main">
       <div className="container header-wrap">
@@ -55,7 +52,7 @@ export const Header = React.memo(() => {
                   className={({ isActive }) => (isActive ? "active-link" : "")}
                 >
                   {item.title === "Корзина"
-                    ? `Корзина (${basketCount})`
+                    ? `Корзина (${roomCount})`
                     : item.title}
                 </NavLink>
               );

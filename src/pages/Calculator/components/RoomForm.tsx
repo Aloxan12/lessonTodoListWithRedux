@@ -39,7 +39,11 @@ const emptyRoom: IRoom = {
   price: 0,
 };
 
-export const RoomForm = React.memo(() => {
+interface IRoomFormProps {
+  setRoomCount?: (value: number) => void;
+}
+
+export const RoomForm = React.memo(({ setRoomCount }: IRoomFormProps) => {
   const [newRoom, setNewRoom] = useState<IRoom>(emptyRoom);
 
   const [errorTitle, setErrorTitle] = useState("");
@@ -148,8 +152,9 @@ export const RoomForm = React.memo(() => {
       ...rooms,
     ];
     localStorage.setItem("rooms", JSON.stringify(newRoomsArr));
+    setRoomCount && setRoomCount(newRoomsArr.length);
     setNewRoom(emptyRoom);
-  }, [newRoom, price, localStorage]);
+  }, [newRoom, price, localStorage, setRoomCount]);
 
   return (
     <div className="calculator-form">

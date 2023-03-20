@@ -3,11 +3,15 @@ import "./Calculator.scss";
 import { CalculatorTitle } from "./components/CalculatorTitle";
 import { RoomForm } from "./components/RoomForm";
 
-export const Calculator = () => {
+interface ICalculatorProps {
+  setRoomCount?: (value: number) => void;
+}
+
+export const Calculator = ({ setRoomCount }: ICalculatorProps) => {
   return (
     <div className="calculator-wrap">
       <CalculatorTitle />
-      <RoomForm />
+      <RoomForm setRoomCount={setRoomCount} />
     </div>
   );
 };
