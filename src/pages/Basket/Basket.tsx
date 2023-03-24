@@ -15,9 +15,7 @@ export const Basket = () => {
       <div className="basket-rooms-wrap">
         {!!rooms.length ? (
           rooms.map((item: IRoom, index: number) => (
-            <div key={`${item.id} ${index}`}>
-              {item.title} {item.price}$
-            </div>
+            <RoomItem room={item} key={`${item.id} ${index}`} />
           ))
         ) : (
           <div className="empty-block">
@@ -33,6 +31,19 @@ interface IRoomItemProps {
   room: IRoom;
 }
 
-const RoomItem = React.memo(({}: IRoomItemProps) => {
-  return <div></div>;
+const RoomItem = React.memo(({ room }: IRoomItemProps) => {
+  return (
+    <div className="room-item">
+      <div className="room-title">
+        <b>Название:</b> {room.title}
+      </div>
+      <div className="room-price">
+        <b>Цена:</b> {room.price}$
+      </div>
+      <div className="room-price">
+        <b>Описание:</b> Площадь помещения {room.square}м²,{" "}
+        {!!room.lampCount ? room.lampCount + " точек света" : "без точек света"}
+      </div>
+    </div>
+  );
 });
