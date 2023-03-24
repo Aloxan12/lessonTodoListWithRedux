@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../utils/images/logo.png";
-import { getRoomsArr } from "../../helpers/getRoomsCount";
 
 const navbarRoute = [
   {

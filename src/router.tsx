@@ -7,6 +7,7 @@ import { MainLayout } from "./components/MainLayout/MainLayout";
 import { Footer } from "./components/Footer/Footer";
 import { Basket } from "./pages/Basket/Basket";
 import { useState } from "react";
+import { getRoomsArr } from "./helpers/getRoomsCount";
 
 const routes = [
   {
@@ -37,7 +38,7 @@ const routes = [
 ];
 
 export const AppRouter = () => {
-  const [roomCount, setRoomCount] = useState(0);
+  const [roomCount, setRoomCount] = useState(getRoomsArr().length);
   return (
     <BrowserRouter>
       <Header roomCount={roomCount} />
