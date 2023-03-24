@@ -1,6 +1,10 @@
+@import "src/styles/global";
+
 .basket-rooms-wrap{
   display: inline-flex;
+  align-items: center;
   flex-wrap: wrap;
+  margin: 0 auto;
 
   width: 100%;
   padding: 20px 0;
@@ -24,6 +28,13 @@
     span{
       font-size: 26px;
       font-weight: 500;
+    }
+  }
+
+  @include media-max(768px) {
+    justify-content: center;
+    .room-item{
+      max-width: 90%;
     }
   }
 }
