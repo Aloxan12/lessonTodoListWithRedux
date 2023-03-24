@@ -3,14 +3,7 @@ import { AppTitlePage } from "../../components/AppTitlePage/AppTitlePage";
 import { getRoomsArr } from "../../helpers/getRoomsCount";
 import "./Basket.scss";
 import { IRoom } from "../Calculator/components/RoomForm";
-
-function formatRooms(num: number) {
-  const cases = [2, 0, 1, 1, 1, 2];
-  const titles = ["комната", "комнаты", "комнат"];
-  const index =
-    num % 100 > 4 && num % 100 < 20 ? 2 : cases[num % 10 < 5 ? num % 10 : 5];
-  return `${num} ${titles[index]}`;
-}
+import { formatRooms } from "../../helpers/formatRooms";
 
 export const Basket = () => {
   const rooms = useMemo(() => getRoomsArr(), [localStorage]);
