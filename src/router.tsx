@@ -39,6 +39,7 @@ const routes = [
 
 export const AppRouter = () => {
   const [roomCount, setRoomCount] = useState(getRoomsArr().length);
+
   return (
     <BrowserRouter>
       <Header roomCount={roomCount} />
