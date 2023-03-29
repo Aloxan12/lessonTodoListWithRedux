@@ -5,6 +5,7 @@ import "./Basket.scss";
 import { IRoom } from "../Calculator/components/RoomForm";
 import { formatRooms } from "../../helpers/formatRooms";
 import { pluralizePoints } from "../../helpers/pluralizePoints";
+import rubbish from "../../utils/icons/icon-rubbish.png";
 
 export const Basket = () => {
   const rooms: IRoom[] = useMemo(() => getRoomsArr(), [localStorage]);
@@ -17,7 +18,7 @@ export const Basket = () => {
     <div className="basket-wrap">
       <AppTitlePage title="Корзина" />
       <h2>
-        У вас в корзине {formatRooms(rooms.length)}. Общая стоимость
+        У вас в корзине {formatRooms(rooms.length)}. Общая стоимость{" "}
         {totalPrice}$
       </h2>
       <div className="basket-rooms-wrap">
@@ -54,6 +55,9 @@ const RoomItem = React.memo(({ room }: IRoomItemProps) => {
           ? `${pluralizePoints(Number(room.lampCount))} света`
           : "без точек света"}{" "}
         {room.cornice && ", есть карниз"}
+      </div>
+      <div className="rubbish">
+        <img className="rubbish-icon" src={rubbish} alt="удалить" />
       </div>
     </div>
   );
