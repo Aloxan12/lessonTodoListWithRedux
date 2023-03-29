@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { AppTitlePage } from "../../components/AppTitlePage/AppTitlePage";
 import { getRoomsArr } from "../../helpers/getRoomsCount";
 import "./Basket.scss";
@@ -8,9 +8,25 @@ import { pluralizePoints } from "../../helpers/pluralizePoints";
 import rubbish from "../../utils/icons/icon-rubbish.png";
 
 export const Basket = () => {
-  const rooms: IRoom[] = useMemo(() => getRoomsArr(), [localStorage]);
+  const roomsLS: IRoom[] = useMemo(() => getRoomsArr(), [localStorage]);
+  const [rooms, setRooms] = useState<IRoom[]>([]);
   const totalPrice = useMemo(
     () => rooms.reduce((acc, el) => acc + el.price, 0),
+    [rooms]
+  );
+
+  useEffect(() => {
+    if (roomsLS) {
+      setRooms(roomsLS);
+    }
+  }, [roomsLS]);
+
+  const removeItem = useCallback(
+    (id: string) => {
+      const newArr = rooms.filter((room) => room.id !== id);
+      localStorage.setItem("rooms", JSON.stringify(newArr));
+      setRooms(newArr);
+    },
     [rooms]
   );
 
@@ -24,7 +40,11 @@ export const Basket = () => {
       <div className="basket-rooms-wrap">
         {!!rooms.length ? (
           rooms.map((item: IRoom, index: number) => (
-            <RoomItem room={item} key={`${item.id} ${index}`} />
+            <RoomItem
+              room={item}
+              key={`${item.id} ${index}`}
+              removeRoom={removeItem}
+            />
           ))
         ) : (
           <div className="empty-block">
@@ -38,9 +58,15 @@ export const Basket = () => {
 
 interface IRoomItemProps {
   room: IRoom;
+  removeRoom: (id: string) => void;
 }
 
-const RoomItem = React.memo(({ room }: IRoomItemProps) => {
+const RoomItem = React.memo(({ room, removeRoom }: IRoomItemProps) => {
+  const removeRoomHandler = useCallback(() => {
+    if (!!room.id) {
+      removeRoom(room.id);
+    }
+  }, [room]);
   return (
     <div className="room-item">
       <div className="room-title">
@@ -57,7 +83,12 @@ const RoomItem = React.memo(({ room }: IRoomItemProps) => {
         {room.cornice && ", есть карниз"}
       </div>
       <div className="rubbish">
-        <img className="rubbish-icon" src={rubbish} alt="удалить" />
+        <img
+          className="rubbish-icon"
+          src={rubbish}
+          alt="удалить"
+          onClick={removeRoomHandler}
+        />
       </div>
     </div>
   );

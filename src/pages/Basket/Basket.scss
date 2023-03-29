@@ -25,14 +25,15 @@
       right: 10px;
       top: 15px;
       width: 30px;
-      height: 30px;
+      height: 37px;
       cursor: pointer;
       .rubbish-icon{
         width: 30px;
-        height: 30px;
+        height: 37px;
         padding-bottom: 5px;
         border-bottom: 2px solid transparent;
         transition: .3s;
+        object-fit: cover;
         &:hover{
           transition: .3s;
           border-color: rgba(11, 11, 11, 0.77);
