@@ -1,11 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { RoomSInitialState } from "./roomsState";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IRoom, RoomSInitialState } from "./roomsState";
 
 export const roomsSlice = createSlice({
   name: "rooms",
   initialState: RoomSInitialState,
-  reducers: {},
+  reducers: {
+    addRoom: (state, { payload: { room } }: PayloadAction<{ room: IRoom }>) => {
+      return { ...state, rooms: [...state.rooms, room] };
+    },
+  },
 });
 
 export const { reducer: roomsReducer } = roomsSlice;
-export const {} = roomsSlice.actions;
+export const { addRoom } = roomsSlice.actions;

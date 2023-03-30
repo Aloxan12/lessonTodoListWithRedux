@@ -1,8 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
+import { roomsReducer } from "./rooms/roomsSlice";
 
 export const rootReducer = combineReducers({
-  // [api.reducerPath]: api.reducer,
-  // unloading: UnloadingReducer,
+  roomsReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
