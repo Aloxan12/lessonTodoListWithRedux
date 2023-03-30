@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/potolki/static/css/main.80813721.css",
-    "main.js": "/potolki/static/js/main.3c44e3c0.js",
+    "main.css": "/potolki/static/css/main.7c5d92cb.css",
+    "main.js": "/potolki/static/js/main.30f30ff8.js",
     "static/js/496.a83f361c.chunk.js": "/potolki/static/js/496.a83f361c.chunk.js",
     "static/media/sergey.jpg": "/potolki/static/media/sergey.d2e7def71f08b18a980a.jpg",
     "static/media/instagram.png": "/potolki/static/media/instagram.8e408da00539cdef4629.png",
@@ -9,13 +9,14 @@
     "static/media/viber.png": "/potolki/static/media/viber.479e1c693358bfdfc654.png",
     "static/media/ico-telegram.png": "/potolki/static/media/ico-telegram.e8540dc14b381676ad9c.png",
     "static/media/phone.png": "/potolki/static/media/phone.cd00a16f6de968e0ee60.png",
+    "static/media/icon-rubbish.png": "/potolki/static/media/icon-rubbish.7c0c20f3fde7ef66b735.png",
     "index.html": "/potolki/index.html",
-    "main.80813721.css.map": "/potolki/static/css/main.80813721.css.map",
-    "main.3c44e3c0.js.map": "/potolki/static/js/main.3c44e3c0.js.map",
+    "main.7c5d92cb.css.map": "/potolki/static/css/main.7c5d92cb.css.map",
+    "main.30f30ff8.js.map": "/potolki/static/js/main.30f30ff8.js.map",
     "496.a83f361c.chunk.js.map": "/potolki/static/js/496.a83f361c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.80813721.css",
-    "static/js/main.3c44e3c0.js"
+    "static/css/main.7c5d92cb.css",
+    "static/js/main.30f30ff8.js"
   ]
 }
