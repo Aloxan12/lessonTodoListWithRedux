@@ -21,7 +21,7 @@ const navbarRoute = [
 ];
 
 export const Header = React.memo(() => {
-  const { rooms } = useAppSelector((state) => state.roomsReducer);
+  const { rooms } = useAppSelector((state) => state.rooms);
   const [isShowMenu, setIsShowMenu] = useState(false);
   const openCloseChangeShowHandler = useCallback(() => {
     setIsShowMenu((prevState) => !prevState);

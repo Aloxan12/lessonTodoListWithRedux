@@ -8,7 +8,7 @@ import rubbish from "../../utils/icons/icon-rubbish.png";
 import { useAppSelector } from "../../store/store";
 
 export const Basket = () => {
-  const { rooms } = useAppSelector((state) => state.roomsReducer);
+  const { rooms } = useAppSelector((state) => state.rooms);
   const totalPrice = useMemo(
     () => rooms.reduce((acc, el) => acc + el.price, 0),
     [rooms]

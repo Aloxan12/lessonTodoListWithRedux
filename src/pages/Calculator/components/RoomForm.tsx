@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { getRoomsArr } from "../../../helpers/getRoomsCount";
 import { AppInput, InputMaskType } from "../../../components/AppInput/AppInput";
 import { AppToggle } from "../../../components/AppToggle/AppToggle";
 import { AppDropdown } from "../../../components/AppDropdown/AppDropdown";
@@ -145,7 +144,9 @@ export const RoomForm = React.memo(() => {
       setErrorSquare("Обязательное поле");
       return;
     }
-    dispatch(addRoom({ room: newRoom }));
+    dispatch(
+      addRoom({ room: { ...newRoom, id: `${new Date().valueOf()}`, price } })
+    );
     setNewRoom(emptyRoom);
   }, [newRoom, price, dispatch]);
 

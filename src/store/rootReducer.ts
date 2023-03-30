@@ -2,7 +2,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { roomsReducer } from "./rooms/roomsSlice";
 
 export const rootReducer = combineReducers({
-  roomsReducer,
+  rooms: roomsReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

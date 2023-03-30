@@ -6,8 +6,6 @@ import { Header } from "./components/Header/Header";
 import { MainLayout } from "./components/MainLayout/MainLayout";
 import { Footer } from "./components/Footer/Footer";
 import { Basket } from "./pages/Basket/Basket";
-import { useState } from "react";
-import { getRoomsArr } from "./helpers/getRoomsCount";
 
 const routes = [
   {
