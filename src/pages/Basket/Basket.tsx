@@ -1,31 +1,24 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo } from "react";
 import { AppTitlePage } from "../../components/AppTitlePage/AppTitlePage";
-import { getRoomsArr } from "../../helpers/getRoomsCount";
 import "./Basket.scss";
 import { IRoom } from "../Calculator/components/RoomForm";
 import { formatRooms } from "../../helpers/formatRooms";
 import { pluralizePoints } from "../../helpers/pluralizePoints";
 import rubbish from "../../utils/icons/icon-rubbish.png";
+import { useAppSelector } from "../../store/store";
 
 export const Basket = () => {
-  const roomsLS: IRoom[] = useMemo(() => getRoomsArr(), [localStorage]);
-  const [rooms, setRooms] = useState<IRoom[]>([]);
+  const { rooms } = useAppSelector((state) => state.roomsReducer);
   const totalPrice = useMemo(
     () => rooms.reduce((acc, el) => acc + el.price, 0),
     [rooms]
   );
 
-  useEffect(() => {
-    if (roomsLS) {
-      setRooms(roomsLS);
-    }
-  }, [roomsLS]);
-
   const removeItem = useCallback(
     (id: string) => {
-      const newArr = rooms.filter((room) => room.id !== id);
-      localStorage.setItem("rooms", JSON.stringify(newArr));
-      setRooms(newArr);
+      // const newArr = rooms.filter((room) => room.id !== id);
+      // localStorage.setItem("rooms", JSON.stringify(newArr));
+      // setRooms(newArr);
     },
     [rooms]
   );

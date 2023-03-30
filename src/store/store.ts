@@ -5,9 +5,9 @@ import { rootReducer, RootState } from "./rootReducer";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 const persistConfig: PersistConfig<RootState> = {
-  key: "authZkh",
+  key: "rooms",
   storage,
-  whitelist: ["authZkh", "unloading"],
+  whitelist: ["rooms"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
