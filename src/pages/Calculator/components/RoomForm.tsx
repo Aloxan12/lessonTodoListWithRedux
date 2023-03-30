@@ -6,6 +6,8 @@ import { AppDropdown } from "../../../components/AppDropdown/AppDropdown";
 import { AppButton } from "../../../components/AppButton/AppButton";
 import { getPriceRoom } from "../../../helpers/getPriceRoom";
 import { RoomPrice } from "./RoomPrice";
+import { useAppDispatch } from "../../../store/store";
+import { addRoom } from "../../../store/rooms/roomsSlice";
 
 type CorniceType =
   | "Открытая ниша"
@@ -39,12 +41,9 @@ const emptyRoom: IRoom = {
   price: 0,
 };
 
-interface IRoomFormProps {
-  setRoomCount?: (value: number) => void;
-}
-
-export const RoomForm = React.memo(({ setRoomCount }: IRoomFormProps) => {
+export const RoomForm = React.memo(() => {
   const [newRoom, setNewRoom] = useState<IRoom>(emptyRoom);
+  const dispatch = useAppDispatch();
 
   const [errorTitle, setErrorTitle] = useState("");
   const [errorSquare, setErrorSquare] = useState("");
@@ -146,15 +145,9 @@ export const RoomForm = React.memo(({ setRoomCount }: IRoomFormProps) => {
       setErrorSquare("Обязательное поле");
       return;
     }
-    const rooms = getRoomsArr();
-    const newRoomsArr = [
-      { ...newRoom, price, id: new Date().valueOf() },
-      ...rooms,
-    ];
-    localStorage.setItem("rooms", JSON.stringify(newRoomsArr));
-    setRoomCount && setRoomCount(newRoomsArr.length);
+    dispatch(addRoom({ room: newRoom }));
     setNewRoom(emptyRoom);
-  }, [newRoom, price, localStorage, setRoomCount]);
+  }, [newRoom, price, dispatch]);
 
   return (
     <div className="calculator-form">

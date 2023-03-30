@@ -38,24 +38,14 @@ const routes = [
 ];
 
 export const AppRouter = () => {
-  const [roomCount, setRoomCount] = useState(getRoomsArr().length);
-
   return (
     <BrowserRouter>
-      <Header roomCount={roomCount} />
+      <Header />
       <MainLayout>
         <Routes>
-          {routes.map(({ id, path, component }) =>
-            id === "Calculator" ? (
-              <Route
-                key={id}
-                path={path}
-                element={<Calculator setRoomCount={setRoomCount} />}
-              />
-            ) : (
-              <Route key={id} path={path} element={component} />
-            )
-          )}
+          {routes.map(({ id, path, component }) => (
+            <Route key={id} path={path} element={component} />
+          ))}
         </Routes>
       </MainLayout>
       <Footer />

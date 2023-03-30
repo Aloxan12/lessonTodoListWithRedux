@@ -2,6 +2,8 @@ import React, { useCallback, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../utils/images/logo.png";
+import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store/store";
 
 const navbarRoute = [
   {
@@ -18,11 +20,8 @@ const navbarRoute = [
   },
 ];
 
-interface IHeaderProps {
-  roomCount: number;
-}
-
-export const Header = React.memo(({ roomCount }: IHeaderProps) => {
+export const Header = React.memo(() => {
+  const { rooms } = useAppSelector((state) => state.roomsReducer);
   const [isShowMenu, setIsShowMenu] = useState(false);
   const openCloseChangeShowHandler = useCallback(() => {
     setIsShowMenu((prevState) => !prevState);
@@ -51,7 +50,7 @@ export const Header = React.memo(({ roomCount }: IHeaderProps) => {
                   className={({ isActive }) => (isActive ? "active-link" : "")}
                 >
                   {item.title === "Корзина"
-                    ? `Корзина (${roomCount})`
+                    ? `Корзина (${rooms.length})`
                     : item.title}
                 </NavLink>
               );
