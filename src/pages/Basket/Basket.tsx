@@ -5,9 +5,11 @@ import { IRoom } from "../Calculator/components/RoomForm";
 import { formatRooms } from "../../helpers/formatRooms";
 import { pluralizePoints } from "../../helpers/pluralizePoints";
 import rubbish from "../../utils/icons/icon-rubbish.png";
-import { useAppSelector } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { removeRoom } from "../../store/rooms/roomsSlice";
 
 export const Basket = () => {
+  const dispatch = useAppDispatch();
   const { rooms } = useAppSelector((state) => state.rooms);
   const totalPrice = useMemo(
     () => rooms.reduce((acc, el) => acc + el.price, 0),
@@ -16,11 +18,9 @@ export const Basket = () => {
 
   const removeItem = useCallback(
     (id: string) => {
-      // const newArr = rooms.filter((room) => room.id !== id);
-      // localStorage.setItem("rooms", JSON.stringify(newArr));
-      // setRooms(newArr);
+      dispatch(removeRoom({ id }));
     },
-    [rooms]
+    [rooms, dispatch]
   );
 
   return (

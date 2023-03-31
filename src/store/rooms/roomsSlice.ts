@@ -8,8 +8,12 @@ export const roomsSlice = createSlice({
     addRoom: (state, { payload: { room } }: PayloadAction<{ room: IRoom }>) => {
       return { ...state, rooms: [...state.rooms, room] };
     },
+    removeRoom: (state, { payload: { id } }: PayloadAction<{ id: string }>) => {
+      const newArr = state.rooms.filter((room) => room.id !== id);
+      return { ...state, rooms: newArr };
+    },
   },
 });
 
 export const { reducer: roomsReducer } = roomsSlice;
-export const { addRoom } = roomsSlice.actions;
+export const { addRoom, removeRoom } = roomsSlice.actions;
