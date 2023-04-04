@@ -26,10 +26,12 @@ export const Basket = () => {
   return (
     <div className="basket-wrap">
       <AppTitlePage title="Корзина" />
-      <h2>
-        У вас в корзине {formatRooms(rooms.length)}. Общая стоимость{" "}
-        {totalPrice}$
-      </h2>
+      {!!rooms.length && (
+        <h2>
+          У вас в корзине {formatRooms(rooms.length)}. Общая стоимость{" "}
+          {totalPrice}$
+        </h2>
+      )}
       <div className="basket-rooms-wrap">
         {!!rooms.length ? (
           rooms.map((item: IRoom, index: number) => (
