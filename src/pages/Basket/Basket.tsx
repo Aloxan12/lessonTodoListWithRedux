@@ -29,7 +29,7 @@ export const Basket = () => {
     (id: string) => {
       dispatch(removeRoom({ id }));
     },
-    [rooms, dispatch]
+    [dispatch]
   );
 
   return (
@@ -72,7 +72,7 @@ const RoomItem = React.memo(({ room, removeRoom, rate }: IRoomItemProps) => {
     if (!!room.id) {
       removeRoom(room.id);
     }
-  }, [room]);
+  }, [room, removeRoom]);
   return (
     <div className="room-item">
       <div className="room-title">
